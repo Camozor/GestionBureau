@@ -29,21 +29,7 @@ public class BureauFacade extends AbstractFacade<Bureau> implements BureauFacade
         return em;
     }
 
-    public void createPrudent(Bureau entity) {
-
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-        Set<ConstraintViolation<Bureau>> constraintViolations = validator.validate(entity);
-        if(constraintViolations.size() > 0){
-            Iterator<ConstraintViolation<Bureau>> iterator = constraintViolations.iterator();
-            while(iterator.hasNext()){
-                ConstraintViolation<Bureau> cv = iterator.next();
-                System.err.println(cv.getRootBeanClass().getName()+"."+cv.getPropertyPath() + " " +cv.getMessage());
-            }
-        }else{
-            getEntityManager().persist(entity);
-        }
-    }   
+    
     
     
     public BureauFacade() {

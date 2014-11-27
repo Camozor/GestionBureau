@@ -17,7 +17,7 @@ public interface BureauFacadeLocal {
 
     void create(Bureau bureau);
     
-    public void createPrudent(Bureau entity);
+    void createPrudent(Bureau bureau);
 
     void edit(Bureau bureau);
 

@@ -8,6 +8,14 @@
         <servlet-name>AdminGestionBureau</servlet-name>
         <url-pattern>/AdminGestionBureau</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminGestionPersonne</servlet-name>
+        <servlet-class>responsable.AdminGestionPersonne</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminGestionPersonne</servlet-name>
+        <url-pattern>/AdminGestionPersonne</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -16,6 +16,8 @@ import javax.ejb.Local;
 public interface PersonneFacadeLocal {
 
     void create(Personne personne);
+    
+    void createPrudent(Personne personne);
 
     void edit(Personne personne);
 
