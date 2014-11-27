@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ResponsableFacade extends AbstractFacade<Responsable> implements ResponsableFacadeLocal {
-    @PersistenceContext(unitName = "GestionBureau-ejbPU")
+    @PersistenceContext(unitName = "GestionBureau-ejbPU2")
     private EntityManager em;
 
     @Override

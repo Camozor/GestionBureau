@@ -13,21 +13,19 @@ import javax.ejb.Local;
  * @author 11316834
  */
 @Local
-public interface BureauFacadeLocal {
+public interface TestFacadeLocal {
 
-    void create(Bureau bureau);
-    
-    public void createPrudent(Bureau entity);
+    void create(Test test);
 
-    void edit(Bureau bureau);
+    void edit(Test test);
 
-    void remove(Bureau bureau);
+    void remove(Test test);
 
-    Bureau find(Object id);
+    Test find(Object id);
 
-    List<Bureau> findAll();
+    List<Test> findAll();
 
-    List<Bureau> findRange(int[] range);
+    List<Test> findRange(int[] range);
 
     int count();
     

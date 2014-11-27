@@ -15,14 +15,17 @@
         <h1>Ajouter un bureau :</h1>
         
         <form action="AdminGestionBureau" method="POST" >
-            <label for="batiment" >Bâtiment :</label>
+            <label for="batiment" >Bâtiment (A ou B) :</label>
             <input type="text" name="batiment" id="batiment" /> <br />
             
-            <label for="batiment" >Numéro :</label>
+            <label for="batiment" >Numéro ([0-9]{3}) :</label>
             <input type="text" name="numero" id="numero" /> <br />
             
-            <label for="etage" >Etage :</label>
+            <label for="etage" >Etage (1, 2 ou 3) : </label>
             <input type="text" name="etage" id="etage" /> <br />
+            
+            <label for="nb_personnes" >Nombre de personnes : </label>
+            <input type="text" name="nb_personnes" id="nb_personnes" /> <br />
             
             <input type="submit" value="Créer !" />
         </form>

@@ -45,14 +45,15 @@ public class AdminGestionBureau extends HttpServlet {
             String batiment = request.getParameter("batiment") ;
             String numero = request.getParameter("numero") ;
             String etage = request.getParameter("etage") ;
+            String nb_personnes = request.getParameter("nb_personnes");
             
-            if (batiment != null && numero != null && etage != null) {
+            if (batiment != null && numero != null && etage != null && nb_personnes != null) {
                 Bureau newBureau = new Bureau();
                 newBureau.setBatiment(batiment);
                 newBureau.setNumero(numero);
                 newBureau.setEtage(etage);
-                newBureau.setNbMaxPersonne(3);
-                bureauFacade.create(newBureau);
+                newBureau.setNbMaxPersonne(new Integer(nb_personnes));
+                bureauFacade.createPrudent(newBureau);
             }
             else {
 //            request.setAttribute("nom", nom) ;
