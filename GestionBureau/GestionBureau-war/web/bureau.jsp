@@ -10,8 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ajout de bureau</title>
+        <style type="text/css" ><%@include file="design.css" %></style>
     </head>
     <body>
+        <%@include file="menu.html" %>
         <h1>Ajouter un bureau :</h1>
         
         <form action="AdminGestionBureau" method="POST" >

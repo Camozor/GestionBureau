@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
+        <servlet-name>AffecterBureau</servlet-name>
+        <servlet-class>Administration.AffecterBureau</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnvoyerMessageAdmin</servlet-name>
+        <servlet-class>Visiteur.EnvoyerMessageAdmin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListePersonnes</servlet-name>
+        <url-pattern>/ListePersonnes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AffecterBureau</servlet-name>
+        <url-pattern>/AffecterBureau</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnvoyerMessageAdmin</servlet-name>
+        <url-pattern>/EnvoyerMessageAdmin</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <servlet>
         <servlet-name>AdminGestionBureau</servlet-name>
-        <servlet-class>responsable.AdminGestionBureau</servlet-class>
+        <servlet-class>Administration.AdminGestionBureau</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListePersonnes</servlet-name>
+        <servlet-class>Administration.ListePersonnes</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminGestionBureau</servlet-name>
@@ -10,15 +39,10 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>AdminGestionPersonne</servlet-name>
-        <servlet-class>responsable.AdminGestionPersonne</servlet-class>
+        <servlet-class>Administration.AdminGestionPersonne</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminGestionPersonne</servlet-name>
         <url-pattern>/AdminGestionPersonne</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
 </web-app>
