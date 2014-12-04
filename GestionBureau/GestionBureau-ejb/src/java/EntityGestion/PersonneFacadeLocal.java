@@ -24,6 +24,7 @@ public interface PersonneFacadeLocal {
     void remove(Personne personne);
 
     Personne find(Object id);
+    Personne find(String id);
 
     List<Personne> findAll();
 

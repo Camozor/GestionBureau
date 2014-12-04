@@ -22,6 +22,10 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    public Personne find(String id) {
+        return find(new Integer(id));
+    }
 
     public PersonneFacade() {
         super(Personne.class);
