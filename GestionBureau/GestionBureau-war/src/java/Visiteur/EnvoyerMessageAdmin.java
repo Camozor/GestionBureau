@@ -7,10 +7,13 @@ package Visiteur;
 
 import EntityGestion.Message;
 import EntityGestion.MessageFacadeLocal;
+import EntityGestion.Personne;
+import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +26,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author 10900286
  */
 public class EnvoyerMessageAdmin extends HttpServlet {
+    @EJB
+    private PersonneFacadeLocal personneFacade;
     @EJB
     private MessageFacadeLocal messageFacade;
 
@@ -40,6 +45,10 @@ public class EnvoyerMessageAdmin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
      
+            List<Personne> lPersonnes = personneFacade.findAll();
+            
+            request.setAttribute("lpersonnes", lPersonnes);
+            
             RequestDispatcher rd = request.getRequestDispatcher("envoyermessage.jsp");
             rd.forward(request, response);
         }
@@ -73,13 +82,20 @@ public class EnvoyerMessageAdmin extends HttpServlet {
             throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
             String message = request.getParameter("message");
+            String personneId = request.getParameter("p");
             Message m = new Message();
             m.setTexte(message);
             m.setDateMessage(Date.valueOf(LocalDate.now()));
+            Personne p = personneFacade.find(personneId);
+            m.setPersonneId(p);
             
             messageFacade.create(m);
+           
+            request.setAttribute("msg_envoye", 1);
+            doGet(request, response);
             
         }
+        catch(Exception e){System.out.println("gregerg");}
     }
 
     /**

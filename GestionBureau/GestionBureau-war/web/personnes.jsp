@@ -22,7 +22,7 @@
             <jstl:forEach items="${lpersonnes}" var="p" >
                 <li>
                     ${p.prenom} ${p.nom} :
-                    <a href="AffecterBureau?id=${p.personneId}" >Affecter Bureau</a>
+                    <a href="AffecterBureau?idpersonne=${p.personneId}" >Affecter Bureau</a>
                 </li>
             </jstl:forEach>
         </ul>

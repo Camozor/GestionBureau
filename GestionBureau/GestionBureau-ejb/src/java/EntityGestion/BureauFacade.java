@@ -28,9 +28,6 @@ public class BureauFacade extends AbstractFacade<Bureau> implements BureauFacade
     protected EntityManager getEntityManager() {
         return em;
     }
-
-    
-    
     
     public BureauFacade() {
         super(Bureau.class);

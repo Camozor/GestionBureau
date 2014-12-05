@@ -5,6 +5,7 @@
  */
 package EntityGestion;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +26,19 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
     
     public Personne find(String id) {
         return find(new Integer(id));
+    }
+    
+    public int countBureau (Integer b_id) {
+        String s = "SELECT COUNT(*) FROM PERSONNE WHERE BUREAU_ID = " 
+                 + b_id.toString();
+        return (int) em.createNativeQuery(s).getSingleResult();
+    }
+    
+    public List<Bureau> bureauxEquipe (String equipe) {
+     //   String s = "SELECT DISTINCT BUREAU_ID FROM PERSONNE WHERE EQUIPE = " + equipe
+         //        + " NATURAL JOIN PERSONNE "
+             
+        
     }
 
     public PersonneFacade() {

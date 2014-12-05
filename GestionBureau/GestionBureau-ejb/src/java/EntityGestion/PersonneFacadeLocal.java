@@ -32,4 +32,6 @@ public interface PersonneFacadeLocal {
 
     int count();
     
+    public int countBureau (Integer b_id);
+    
 }

@@ -45,11 +45,10 @@ public class AdminGestionPersonne extends HttpServlet {
         String prenom = request.getParameter("prenom");
         String mail = request.getParameter("mail");
         String equipe = request.getParameter("equipe");
-        String batiment = request.getParameter("batiment");
         String date_debut = request.getParameter("date_debut");
         String date_fin = request.getParameter("date_fin");
         
-         if (nom != null && prenom != null && mail != null && equipe != null && batiment != null && date_debut != null) {
+         if (nom != null && prenom != null && mail != null && equipe != null && date_debut != null) {
             
             try {
                 Personne p = new Personne();

@@ -25,9 +25,9 @@ public class SuperMail {
         try
         {
             String to = email;
-            String from = "paul.bismuth44.gmail.com";
+            String from = "paul.bismuth44@gmail.com";
             String subject = "Message de l'administrateur de gestion de bureaux : ";
-            String smtpServ = "upn.univ-paris13.fr";
+            String smtpServ = "smtp.gmail.com";
 
             
             Properties props = System.getProperties();

@@ -40,10 +40,9 @@ public class ListePersonnes extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            System.out.println("hohohohohohohohooooooooooooooooooooooooooooooo");
           List<Personne> lPersonnes = personneFacade.findAll();
             
-            request.setAttribute("lpersonnes", lPersonnes) ;
+            request.setAttribute("lpersonnes", lPersonnes);
             
             RequestDispatcher rd = request.getRequestDispatcher("personnes.jsp");
             rd.forward(request, response);

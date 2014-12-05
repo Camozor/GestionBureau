@@ -142,10 +142,6 @@ public class Bureau implements Serializable {
     public String toString() {
         return "EntitesGestionBureau.Bureau[ bureauId=" + bureauId + " ]";
     }
-    
-    public String getJoliNom(){
-        return "bat : " + getBatiment() + " num : " + getNumero();
-    }
 
     @XmlTransient
     public Collection<Personne> getPersonneCollection() {
@@ -154,6 +150,11 @@ public class Bureau implements Serializable {
 
     public void setPersonneCollection(Collection<Personne> personneCollection) {
         this.personneCollection = personneCollection;
+    }
+    
+    public String getJoliNom(){
+        return "bâtiment : " + getBatiment() + ", étage : " + getEtage() 
+                + ", numéro : " + getNumero();
     }
     
 }

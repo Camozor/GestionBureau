@@ -29,9 +29,6 @@
             <label for="equipe" >Equipe :</label>
             <input type="text" name="equipe" id="equipe" /> <br />
             
-            <label for="batiment" >Bâtiment (A ou B) :</label>
-            <input type="text" name="batiment" id="batiment" /> <br />
-            
             <label for="date_debut" >Date de début (AAAA-MM-JJ) :</label>
             <input type="date" name="date_debut" id="date_debut" /> <br />
             
