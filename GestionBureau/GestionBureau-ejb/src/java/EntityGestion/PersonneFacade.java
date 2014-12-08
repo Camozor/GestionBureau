@@ -5,6 +5,7 @@
  */
 package EntityGestion;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,10 +36,18 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
     }
     
     public List<Bureau> bureauxEquipe (String equipe) {
-     //   String s = "SELECT DISTINCT BUREAU_ID FROM PERSONNE WHERE EQUIPE = " + equipe
-         //        + " NATURAL JOIN PERSONNE "
-             
+        String s = "SELECT B_ALL.* FROM BUREAU B_ALL\n" +
+            "/**/\n" +
+            "JOIN BUREAU B_SELECT\n" +
+            "ON B_ALL.BATIMENT = B_SELECT.BATIMENT \n" +
+            "AND B_ALL.ETAGE = B_SELECT.ETAGE\n" +
+            "/**/\n" +
+            "JOIN PERSONNE P\n" +
+            "ON B_SELECT.BUREAU_ID = P.BUREAU_ID\n" +
+            "WHERE P.EQUIPE = 'CALIN'";
         
+        List<Bureau> a = em.createNativeQuery(s, Bureau.class).getResultList();
+        return a;
     }
 
     public PersonneFacade() {

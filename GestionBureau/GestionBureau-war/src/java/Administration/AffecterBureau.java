@@ -11,6 +11,7 @@ import EntityGestion.Personne;
 import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.EJB;
@@ -53,10 +54,11 @@ public class AffecterBureau extends HttpServlet {
                 return;
             }
             request.setAttribute("p", p);
+
             
-            List<Bureau> lbureaux = bureauFacade.findAll();
             
-            request.setAttribute("lbu", lbureaux);
+            
+            request.setAttribute("lbu", personneFacade.bureauxEquipe(p.getEquipe()));
             
             
             

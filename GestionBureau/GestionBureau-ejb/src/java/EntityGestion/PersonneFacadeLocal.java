@@ -34,4 +34,6 @@ public interface PersonneFacadeLocal {
     
     public int countBureau (Integer b_id);
     
+    public List<Bureau> bureauxEquipe (String equipe);
+    
 }
