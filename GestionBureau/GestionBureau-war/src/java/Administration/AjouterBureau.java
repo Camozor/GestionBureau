@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 11316834
  */
-public class AdminGestionBureau extends HttpServlet {
+public class AjouterBureau extends HttpServlet {
     @EJB
     private BureauFacadeLocal bureauFacade;
 

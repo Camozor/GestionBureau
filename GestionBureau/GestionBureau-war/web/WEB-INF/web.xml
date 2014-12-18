@@ -50,23 +50,23 @@
         </session-timeout>
     </session-config>
     <servlet>
-        <servlet-name>AdminGestionBureau</servlet-name>
-        <servlet-class>Administration.AdminGestionBureau</servlet-class>
+        <servlet-name>AjouterBureau</servlet-name>
+        <servlet-class>Administration.AjouterBureau</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminListePersonnes</servlet-name>
         <servlet-class>Administration.AdminListePersonnes</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AdminGestionBureau</servlet-name>
-        <url-pattern>/AdminGestionBureau</url-pattern>
+        <servlet-name>AjouterBureau</servlet-name>
+        <url-pattern>/AjouterBureau</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>AdminGestionPersonne</servlet-name>
-        <servlet-class>Administration.AdminGestionPersonne</servlet-class>
+        <servlet-name>AjouterPersonne</servlet-name>
+        <servlet-class>Administration.AjouterPersonne</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AdminGestionPersonne</servlet-name>
-        <url-pattern>/AdminGestionPersonne</url-pattern>
+        <servlet-name>AjouterPersonne</servlet-name>
+        <url-pattern>/AjouterPersonne</url-pattern>
     </servlet-mapping>
 </web-app>
