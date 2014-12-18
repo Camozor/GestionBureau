@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import outils.HelpDate;
 
 /**
  *
@@ -43,8 +44,9 @@ public class AdminListePersonnes extends HttpServlet {
           List<Personne> lPersonnes = personneFacade.findAll();
             
             request.setAttribute("lpersonnes", lPersonnes);
+            request.setAttribute("calendar", new HelpDate());
             
-            RequestDispatcher rd = request.getRequestDispatcher("administration/personnes.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("administration/listepersonnes.jsp");
             rd.forward(request, response);
         }
     }

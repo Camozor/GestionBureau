@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 11316834
  */
-public class AdminGestionPersonne extends HttpServlet {
+public class AjouterPersonne extends HttpServlet {
     @EJB
     private PersonneFacadeLocal personneFacade;
 

@@ -3,6 +3,7 @@
     Created on : 2 déc. 2014, 13:15:52
     Author     : 10900286
 --%>
+<%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.List"%>
 <%@page import="EntityGestion.Personne"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,6 +20,9 @@
         <h2>Gestion Bureau Administration</h2>
         <%@include file="menu.html" %>
         <h1>Liste des personnes</h1>
+ 
+
+                        
         <j:if test="${lpersonnes.size() > 0}">
             <table>
                 <thead>
@@ -36,6 +40,7 @@
                 <tbody>
                     <j:forEach items="${lpersonnes}" var="p" >
                         
+                        
                         <j:choose>
                             <j:when test="${p.getBureauId() != null}" >
                                 <j:set value="${p.getBureauId().getSuccintJoliNom()}" var="bureau" />
@@ -47,7 +52,7 @@
                             
                         <j:choose>
                             <j:when test="${p.getDateFin() != null}" >
-                                <j:set value="${p.getDateFin()}" var="dateFin" />
+                                <j:set value="${calendar.getDate(p.getDateFin())}" var="dateFin" />
                             </j:when>
                             <j:otherwise>
                                 <j:set value="Aucune" var="dateFin" />
@@ -55,11 +60,11 @@
                         </j:choose>
                             
                         <tr>
-                            <td>${p.getPrenom()}</td>
+                            <td> ${p.getPrenom()}</td>
                             <td>${p.getNom()}</td>
                             <td>${p.getMail()}</td>
                             <td>${p.getEquipe()}</td>
-                            <td>${p.getDateDebut()}</td>
+                            <td>${calendar.getDate(p.getDateDebut())}</td>
                             <td>${dateFin}</td>
                             <td>${bureau}</td>
                             <td>
