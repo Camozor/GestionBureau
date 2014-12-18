@@ -159,6 +159,11 @@ public class Bureau implements Serializable {
                 + ", numéro : " + getNumero();
     }
     
+    
+    public String getSuccintJoliNom(){
+        return getBatiment() + "-" + getEtage() + "-" + getNumero();
+    }
+    
     public static List<Bureau> getAutresBureaux(List<Bureau> lbutous, List<Bureau> lbuproches){
         List<Bureau> lbuautres = new ArrayList<>();
         for(Bureau b : lbutous){
