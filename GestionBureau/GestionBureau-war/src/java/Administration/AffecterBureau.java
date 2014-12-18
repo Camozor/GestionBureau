@@ -61,7 +61,7 @@ public class AffecterBureau extends HttpServlet {
             List<Bureau> lbuautres = Bureau.getAutresBureaux(lbutous, lbuproches);
             request.setAttribute("lbuautres", lbuautres);
          
-            RequestDispatcher rd = request.getRequestDispatcher("affecterbureau.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("administration/affecterbureau.jsp");
             
             rd.forward(request, response);
         }

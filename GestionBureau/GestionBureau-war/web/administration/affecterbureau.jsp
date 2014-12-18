@@ -13,9 +13,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Changer de bureau</title>
-        <style type="text/css" ><%@include file="design.css" %></style>
+        <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
+        <h2>Gestion Bureau Admin</h2>
         <%@include file="menu.html" %>
         <h1>Affecter un bureau :</h1>
         <img src="bubu.jpg" alt="Bruno le bureau" title="Bruno le bureau" />
