@@ -41,12 +41,7 @@
             
         <form action="AffecterBureau" method="POST" >
             
-            Liste des bureaux proches : <br />
-            
-            <input type="radio" name="bu-id-selected" value="null" 
-                       id="id-radio-bu-null" checked />
-            <label for="id-radio-bu-null" >Sans Bureau Fixe</label>
-            <br />
+            Liste des bureaux proches de ceux des équipiers : <br />
             
             <jstl:forEach items="${lbuproches}" var="bu" >
                 
@@ -82,6 +77,12 @@
                 
                 
             </jstl:forEach>
+                
+                
+            <input type="radio" name="bu-id-selected" value="null" 
+                       id="id-radio-bu-null" checked />
+            <label for="id-radio-bu-null" >Sans Bureau Fixe</label>
+            <br />
               
             <input type="submit" value="Changer" />
         </form>
