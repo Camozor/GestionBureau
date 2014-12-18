@@ -25,7 +25,11 @@
                 <j:forEach items="${lMessages}" var="m" >
                     <j:set value="${m.getPersonneId()}" var="p" />
                     <li>
-                        <strong>${p.getPrenom()} ${p.getNom()} : ${m.getDateMessage()}</strong>
+                        <strong>
+                            <span>${p.getPrenom()}</span> 
+                            <span>${p.getNom()} : </span>
+                            <span>${calendar.getDate(m.getDateMessage())}</span>
+                        </strong>
                         <p>${m.getTexte()}</p>
                     </li>
                 </j:forEach>
