@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2 déc. 2014, 18:02:50
+    Author     : 10900286
+*/
+
+.canard-list li {
+    list-style-image : url(img/duck.png);   
+}
+
+.mail-list li {
+    list-style-image : url(img/mail.png);   
+}
+
+.admin-list li {
+    list-style-image : url(img/admin.png);   
+}

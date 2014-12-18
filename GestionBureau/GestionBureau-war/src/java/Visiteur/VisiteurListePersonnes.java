@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Administration;
+package Visiteur;
 
-
-import EntityGestion.Bureau;
-import EntityGestion.BureauFacadeLocal;
+import EntityGestion.Personne;
+import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,12 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author 11316834
+ * @author 10900286
  */
-public class AjouterBureau extends HttpServlet {
+public class VisiteurListePersonnes extends HttpServlet {
     @EJB
-    private BureauFacadeLocal bureauFacade;
-
+    private PersonneFacadeLocal personneFacade;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,32 +36,12 @@ public class AjouterBureau extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       request.setCharacterEncoding("UTF-8") ;
-            
-            
-            
-            RequestDispatcher rd = request.getRequestDispatcher("administration/bureau.jsp");
-
-            String batiment = request.getParameter("batiment");
-            String numero = request.getParameter("numero");
-            String etage = request.getParameter("etage");
-            String nb_personnes = request.getParameter("nb_personnes");
-            
-            if (batiment != null && numero != null && etage != null && nb_personnes != null) {  
-                Bureau newBureau = new Bureau();
-                newBureau.setBatiment(batiment);
-                newBureau.setNumero(numero);
-                newBureau.setEtage(etage);
-                newBureau.setNbMaxPersonne(new Integer(nb_personnes));
-                bureauFacade.createPrudent(newBureau);
-            }
-            else {
-//            request.setAttribute("nom", nom) ;
-//            request.setAttribute("prenom", prenom) ;
-            }
-            
-
-          rd.forward(request, response);
+        
+        List<Personne> lPersonnes = personneFacade.findAll();
+        request.setAttribute("lpersonnes", lPersonnes);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("visiteur/listepersonnes.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
