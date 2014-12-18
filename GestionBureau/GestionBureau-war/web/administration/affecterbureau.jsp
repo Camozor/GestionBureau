@@ -19,7 +19,7 @@
         <h2>Gestion Bureau Admin</h2>
         <%@include file="menu.html" %>
         <h1>Affecter un bureau :</h1>
-        <img src="bubu.jpg" alt="Bruno le bureau" title="Bruno le bureau" />
+        <img src="img/bubu.jpg" alt="Bruno le bureau" title="Bruno le bureau" />
         <br />
         
         <h3>${p.prenom} ${p.nom}</h3>
