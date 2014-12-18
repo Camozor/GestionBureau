@@ -7,8 +7,10 @@ package Visiteur;
 
 import EntityGestion.Bureau;
 import EntityGestion.BureauFacadeLocal;
+import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -22,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author 10900286
  */
 public class VisiteurListeBureaux extends HttpServlet {
+    @EJB
+    private PersonneFacadeLocal personneFacade;
     @EJB
     private BureauFacadeLocal bureauFacade;
 
@@ -39,8 +43,15 @@ public class VisiteurListeBureaux extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         List<Bureau> lBureaux = bureauFacade.findAll();
-        
         request.setAttribute("lBureaux", lBureaux);
+        
+        ArrayList<Integer> ln = new ArrayList<>();
+        Integer n;
+        for(Bureau b : lBureaux){
+            n = personneFacade.countBureau(b.getBureauId());
+            ln.add(n);
+        }
+        request.setAttribute("ln", ln);
         
         RequestDispatcher rd = request.getRequestDispatcher("visiteur/listebureaux.jsp");
         rd.forward(request, response);

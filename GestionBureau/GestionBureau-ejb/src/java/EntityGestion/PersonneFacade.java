@@ -25,16 +25,19 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
         return em;
     }
     
+    @Override
     public Personne find(String id) {
         return find(new Integer(id));
     }
     
+    @Override
     public int countBureau (Integer b_id) {
         String s = "SELECT COUNT(*) FROM PERSONNE WHERE BUREAU_ID = " 
                  + b_id.toString();
         return (int) em.createNativeQuery(s).getSingleResult();
     }
     
+    @Override
     public List<Bureau> bureauxEquipe (String equipe) {
         
         String s = "SELECT DISTINCT B_ALL.* FROM BUREAU B_ALL " +

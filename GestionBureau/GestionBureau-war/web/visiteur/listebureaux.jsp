@@ -28,11 +28,11 @@
                 </thead>
                 <tbody>
                     <j:forEach items="${lBureaux}" var="b" >
-                        
+                                        
                         <j:choose>
                             <j:when test="${b.getBureauId() != null}" >
                                 <j:set value="${b.getSuccintJoliNom()}" var="bureau" />
-                                <j:set value="${b.getNbMaxPersonne()}" var="nbpersonne" />
+                                <j:set value="${b.getNbMaxPersonne()} / " var="nbpersonne" />
                             </j:when>
                             <j:otherwise>
                                 <j:set value="Aucun" var="bureau" />

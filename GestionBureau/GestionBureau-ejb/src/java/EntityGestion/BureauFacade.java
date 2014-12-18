@@ -26,5 +26,5 @@ public class BureauFacade extends AbstractFacade<Bureau> implements BureauFacade
     public BureauFacade() {
         super(Bureau.class);
     }
-     
+    
 }
