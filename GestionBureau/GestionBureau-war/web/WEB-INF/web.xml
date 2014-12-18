@@ -55,7 +55,7 @@
     </servlet>
     <servlet>
         <servlet-name>ListePersonnes</servlet-name>
-        <servlet-class>Visiteur.ListePersonnes</servlet-class>
+        <servlet-class>Administration.ListePersonnes</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminGestionBureau</servlet-name>

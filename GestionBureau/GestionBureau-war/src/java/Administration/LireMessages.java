@@ -9,6 +9,7 @@ import EntityGestion.Message;
 import EntityGestion.MessageFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -40,6 +41,7 @@ public class LireMessages extends HttpServlet {
         List<Message> lMessages = messageFacade.findAll();
             
             request.setAttribute("lMessages", lMessages);
+            request.setAttribute("calendar", new GregorianCalendar());
             
             RequestDispatcher rd = request.getRequestDispatcher("administration/liremessages.jsp");
             rd.forward(request, response);
