@@ -41,7 +41,7 @@ public class AjouterBureau extends HttpServlet {
             
             
             
-            RequestDispatcher rd = request.getRequestDispatcher("administration/bureau.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("administration/ajouterbureau.jsp");
 
             String batiment = request.getParameter("batiment");
             String numero = request.getParameter("numero");

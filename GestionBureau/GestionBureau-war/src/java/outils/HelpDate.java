@@ -27,4 +27,26 @@ public class HelpDate extends GregorianCalendar {
         return result;
     }
     
+    public String getDateTime (Date d) {
+       
+        this.setGregorianChange(d);
+        
+        Integer minutes = this.get(MINUTE);
+        String minutestr = "";
+        if (minutes > 10) minutestr = minutes.toString();
+        else minutestr = "0" + minutes.toString();
+        
+        System.out.println(minutestr);
+        
+        String result = 
+            this.get(DAY_OF_MONTH) + " " + 
+            this.getDisplayName(MONTH, SHORT, Locale.FRENCH) + " " + 
+            this.get(YEAR) + " " + 
+            this.get(HOUR_OF_DAY) + ":" + this.get(MINUTE) +
+            minutestr;
+        
+        System.out.println(result);
+        return result;
+    }
+    
 }

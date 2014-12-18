@@ -17,7 +17,7 @@
         <%@include file="menu.html" %>
         <h1>Ajouter un bureau :</h1>
         
-        <form action="AdminGestionBureau" method="POST" >
+        <form action="AjouterBureau" method="POST" >
             <label for="batiment" >Bâtiment (A ou B) :</label>
             <input type="text" name="batiment" id="batiment" /> <br />
             

@@ -17,7 +17,7 @@
         <%@include file="menu.html" %>
         <h1>Ajouter une personne :</h1>
         
-        <form action="AdminGestionPersonne" method="POST" >
+        <form action="AjouterPersonne" method="POST" >
             <label for="nom" >Nom :</label>
             <input type="text" name="nom" id="nom" /> <br />
             
