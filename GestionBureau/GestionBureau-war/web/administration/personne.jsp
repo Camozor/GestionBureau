@@ -10,9 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ajout de personne</title>
-        <style type="text/css" ><%@include file="design.css" %></style>
+        <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
+        <h2>Gestion Bureau Administration</h2>
         <%@include file="menu.html" %>
         <h1>Ajouter une personne :</h1>
         

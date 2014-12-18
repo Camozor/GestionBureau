@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Administration;
+package Visiteur;
 
 import EntityGestion.Personne;
 import EntityGestion.PersonneFacadeLocal;
@@ -44,7 +44,7 @@ public class ListePersonnes extends HttpServlet {
             
             request.setAttribute("lpersonnes", lPersonnes);
             
-            RequestDispatcher rd = request.getRequestDispatcher("personnes.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("visiteur/personnes.jsp");
             rd.forward(request, response);
         }
     }

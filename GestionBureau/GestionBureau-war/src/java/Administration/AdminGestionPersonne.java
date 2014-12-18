@@ -39,7 +39,7 @@ public class AdminGestionPersonne extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher rd = request.getRequestDispatcher("personne.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("administration/personne.jsp");
         
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");

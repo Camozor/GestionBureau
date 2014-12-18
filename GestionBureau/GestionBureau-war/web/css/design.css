@@ -8,6 +8,14 @@ and open the template in the editor.
     Author     : 10900286
 */
 
-li {
-    list-style-image : url(duck.png);   
+.canard-list li {
+    list-style-image : url(img/duck.png);   
+}
+
+.mail-list li {
+    list-style-image : url(img/mail.png);   
+}
+
+.admin-list li {
+    list-style-image : url(img/admin.png);   
 }

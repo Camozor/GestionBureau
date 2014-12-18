@@ -10,7 +10,5 @@
         <property name="URL" value="jdbc:derby://localhost:1527/GestionBureauDB"/>
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="GESTIONBUREAUJNDI" object-type="user" pool-name="derby_net_GestionBureauDB_GestionBureauUserPool"/>
-    <jdbc-resource enabled="true" jndi-name="JNDISUPER" object-type="user" pool-name="derby_net_GestionBureauDB_blaPool"/>
     <jdbc-resource enabled="true" jndi-name="GestionBureauJNDI" object-type="user" pool-name="derby_net_GestionBureauDB_blaPool"/>
 </resources>

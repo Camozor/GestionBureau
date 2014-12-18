@@ -16,6 +16,7 @@
         <style type="text/css" ><%@include file="design.css" %></style>
     </head>
     <body>
+        <h2>Gestion Bureau</h2>
         <%@include file="menu.html" %>
         <h1>Liste des personnes</h1>
         <ul>

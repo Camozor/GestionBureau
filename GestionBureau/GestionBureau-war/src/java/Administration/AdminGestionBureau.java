@@ -42,7 +42,7 @@ public class AdminGestionBureau extends HttpServlet {
             
             
             
-            RequestDispatcher rd = request.getRequestDispatcher("bureau.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("administration/bureau.jsp");
 
             String batiment = request.getParameter("batiment");
             String numero = request.getParameter("numero");

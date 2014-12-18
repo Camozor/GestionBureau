@@ -8,6 +8,18 @@
         <servlet-name>EnvoyerMessageAdmin</servlet-name>
         <servlet-class>Visiteur.EnvoyerMessageAdmin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LireMessages</servlet-name>
+        <servlet-class>Administration.LireMessages</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Administration</servlet-name>
+        <servlet-class>Administration.Administration</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>Visiteur.Index</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListePersonnes</servlet-name>
         <url-pattern>/ListePersonnes</url-pattern>
@@ -20,6 +32,18 @@
         <servlet-name>EnvoyerMessageAdmin</servlet-name>
         <url-pattern>/EnvoyerMessageAdmin</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LireMessages</servlet-name>
+        <url-pattern>/LireMessages</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Administration</servlet-name>
+        <url-pattern>/Administration</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -31,7 +55,7 @@
     </servlet>
     <servlet>
         <servlet-name>ListePersonnes</servlet-name>
-        <servlet-class>Administration.ListePersonnes</servlet-class>
+        <servlet-class>Visiteur.ListePersonnes</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminGestionBureau</servlet-name>

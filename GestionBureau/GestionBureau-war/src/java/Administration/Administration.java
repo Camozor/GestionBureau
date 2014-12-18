@@ -3,18 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Visiteur;
+package Administration;
 
-import EntityGestion.Message;
-import EntityGestion.MessageFacadeLocal;
-import EntityGestion.Personne;
-import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.List;
-import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,13 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author 10900286
+ * @author 11316834
  */
-public class EnvoyerMessageAdmin extends HttpServlet {
-    @EJB
-    private PersonneFacadeLocal personneFacade;
-    @EJB
-    private MessageFacadeLocal messageFacade;
+public class Administration extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,15 +31,9 @@ public class EnvoyerMessageAdmin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-     
-            List<Personne> lPersonnes = personneFacade.findAll();
-            
-            request.setAttribute("lpersonnes", lPersonnes);
-            
-            RequestDispatcher rd = request.getRequestDispatcher("visiteur/envoyermessage.jsp");
+
+            RequestDispatcher rd = request.getRequestDispatcher("administration/index.jsp");
             rd.forward(request, response);
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -80,22 +62,7 @@ public class EnvoyerMessageAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try (PrintWriter out = response.getWriter()) {
-            String message = request.getParameter("message");
-            String personneId = request.getParameter("p");
-            Message m = new Message();
-            m.setTexte(message);
-            m.setDateMessage(Date.valueOf(LocalDate.now()));
-            Personne p = personneFacade.find(personneId);
-            m.setPersonneId(p);
-            
-            messageFacade.create(m);
-           
-            request.setAttribute("msg_envoye", 1);
-            doGet(request, response);
-            
-        }
-        catch(Exception e){System.out.println("gregerg");}
+        processRequest(request, response);
     }
 
     /**
