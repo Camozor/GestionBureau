@@ -11,12 +11,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gestion de bureaux</title>
+        <title>JSP Page</title>
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
-        <h1>Gestion Bureau</h1>
+        <h1>Gestion Bureau Administration</h1>
         <%@include file="menu.html" %>
-        <h2>Bienvenue !</h2>
+        <h2>Bienvenue Administrateur !</h2>
     </body>
 </html>
