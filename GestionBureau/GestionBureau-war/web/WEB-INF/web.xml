@@ -21,8 +21,8 @@
         <servlet-class>Visiteur.Index</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ListePersonnes</servlet-name>
-        <url-pattern>/ListePersonnes</url-pattern>
+        <servlet-name>AdminListePersonnes</servlet-name>
+        <url-pattern>/AdminListePersonnes</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AffecterBureau</servlet-name>
@@ -54,8 +54,8 @@
         <servlet-class>Administration.AdminGestionBureau</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListePersonnes</servlet-name>
-        <servlet-class>Administration.ListePersonnes</servlet-class>
+        <servlet-name>AdminListePersonnes</servlet-name>
+        <servlet-class>Administration.AdminListePersonnes</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminGestionBureau</servlet-name>

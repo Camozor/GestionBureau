@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 10900286
  */
-public class ListePersonnes extends HttpServlet {
+public class AdminListePersonnes extends HttpServlet {
     @EJB
     private PersonneFacadeLocal personneFacade;
 
