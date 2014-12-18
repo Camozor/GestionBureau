@@ -6,7 +6,9 @@
 package EntityGestion;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -155,6 +157,15 @@ public class Bureau implements Serializable {
     public String getJoliNom(){
         return "bâtiment : " + getBatiment() + ", étage : " + getEtage() 
                 + ", numéro : " + getNumero();
+    }
+    
+    public static List<Bureau> getAutresBureaux(List<Bureau> lbutous, List<Bureau> lbuproches){
+        List<Bureau> lbuautres = new ArrayList<>();
+        for(Bureau b : lbutous){
+            if(!lbuproches.contains(b))
+                lbuautres.add(b);
+        }
+        return lbuautres;
     }
     
 }

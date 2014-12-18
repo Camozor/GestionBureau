@@ -5,15 +5,9 @@
  */
 package EntityGestion;
 
-import java.util.Iterator;
-import java.util.Set;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 /**
  *
@@ -32,5 +26,5 @@ public class BureauFacade extends AbstractFacade<Bureau> implements BureauFacade
     public BureauFacade() {
         super(Bureau.class);
     }
-    
+     
 }

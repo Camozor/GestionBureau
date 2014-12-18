@@ -11,7 +11,6 @@ import EntityGestion.Personne;
 import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.EJB;
@@ -54,14 +53,14 @@ public class AffecterBureau extends HttpServlet {
                 return;
             }
             request.setAttribute("p", p);
-
             
+            List<Bureau> lbuproches = personneFacade.bureauxEquipe(p.getEquipe());
+            request.setAttribute("lbuproches", lbuproches);
             
-            
-            request.setAttribute("lbu", personneFacade.bureauxEquipe(p.getEquipe()));
-            
-            
-            
+            List<Bureau> lbutous = bureauFacade.findAll();
+            List<Bureau> lbuautres = Bureau.getAutresBureaux(lbutous, lbuproches);
+            request.setAttribute("lbuautres", lbuautres);
+         
             RequestDispatcher rd = request.getRequestDispatcher("affecterbureau.jsp");
             
             rd.forward(request, response);
@@ -154,7 +153,7 @@ public class AffecterBureau extends HttpServlet {
             personneFacade.edit(p);
 
             // Fin : succès
-            request.setAttribute("bureau_change", true);
+            request.setAttribute("bureau_change", 1);
             doGet(request, response);
         }
         catch (BureauCompletException e) {

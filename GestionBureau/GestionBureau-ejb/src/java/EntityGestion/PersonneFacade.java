@@ -36,19 +36,23 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
     }
     
     public List<Bureau> bureauxEquipe (String equipe) {
-        String s = "SELECT B_ALL.* FROM BUREAU B_ALL\n" +
-            "/**/\n" +
-            "JOIN BUREAU B_SELECT\n" +
-            "ON B_ALL.BATIMENT = B_SELECT.BATIMENT \n" +
-            "AND B_ALL.ETAGE = B_SELECT.ETAGE\n" +
-            "/**/\n" +
-            "JOIN PERSONNE P\n" +
-            "ON B_SELECT.BUREAU_ID = P.BUREAU_ID\n" +
-            "WHERE P.EQUIPE = 'CALIN'";
+        
+        String s = "SELECT DISTINCT B_ALL.* FROM BUREAU B_ALL " +
+            "JOIN BUREAU B_SELECT " +
+            "ON B_ALL.BATIMENT = B_SELECT.BATIMENT " +
+            "AND B_ALL.ETAGE = B_SELECT.ETAGE " +
+            "JOIN PERSONNE P " +
+            "ON B_SELECT.BUREAU_ID = P.BUREAU_ID " +
+            "WHERE P.EQUIPE = '" + equipe+"'";
         
         List<Bureau> a = em.createNativeQuery(s, Bureau.class).getResultList();
         return a;
     }
+    
+//    public List<Bureau> findBonsBureaux(String equipe){
+//        List<Bureau> lbons = em.createNamedQuery("Personne.findBonsBureaux").setParameter("equipe", equipe).getResultList();
+//        return lbons;
+//    }
 
     public PersonneFacade() {
         super(Personne.class);

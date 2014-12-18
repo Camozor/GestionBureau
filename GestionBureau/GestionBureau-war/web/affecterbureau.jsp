@@ -27,22 +27,27 @@
             <span>Equipe : ${p.equipe}</span>
         </p>
         
-        <jstl:if test="${bureau_change}" >
+   
+        <jstl:if test="${bureau_change} = 1" >
             <p>Changement effectué !</p>
         </jstl:if>
-            
+
+        
         <jstl:if test="${erreur.length() > 0}" >
             <p><strong>Erreur : </strong>${erreur}</p>
         </jstl:if>
         
+            
         <form action="AffecterBureau" method="POST" >
+            
+            Liste des bureaux proches : <br />
             
             <input type="radio" name="bu-id-selected" value="null" 
                        id="id-radio-bu-null" checked />
             <label for="id-radio-bu-null" >Sans Bureau Fixe</label>
             <br />
             
-            <jstl:forEach items="${lbu}" var="bu" >
+            <jstl:forEach items="${lbuproches}" var="bu" >
                 
                 <jstl:set var="checked" value="" />
                 
@@ -58,7 +63,24 @@
             </jstl:forEach>
                 
                 <input type="hidden" name="idpersonne" value="${p.personneId}" />
+                
+            Autres bureaux : <br />
             
+            <jstl:forEach items="${lbuautres}" var="bu" >
+                
+                <jstl:set var="checked" value="" />
+                
+                <jstl:if test="${p.bureauId.bureauId == bu.bureauId}" >
+                    <jstl:set var="checked" value=" checked " />
+                </jstl:if>
+    
+                <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
+                       id="id-radio-bu-${bu.bureauId}" />
+                <label for="id-radio-bu-${bu.bureauId}" >${bu.batiment} ${bu.etage} ${bu.numero}</label>
+                <br />
+                
+                
+            </jstl:forEach>
               
             <input type="submit" value="Changer" />
         </form>

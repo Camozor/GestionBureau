@@ -36,4 +36,5 @@ public interface PersonneFacadeLocal {
     
     public List<Bureau> bureauxEquipe (String equipe);
     
+//        public List<Bureau> findBonsBureaux(String equipe);
 }
