@@ -13,7 +13,7 @@
         <title>Liste des personnes</title>
     </head>
     <body>
-        <h2>Gestion Bureau</h2>
+        <h2>Gestion Bureau Visiteur</h2>
         <%@include file="menu.html" %>
         
         <h1>Affectation du personnel</h1>

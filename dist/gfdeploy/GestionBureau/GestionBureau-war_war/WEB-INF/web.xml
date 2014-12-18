@@ -48,6 +48,10 @@
         <servlet-name>VisiteurListePersonnes</servlet-name>
         <url-pattern>/VisiteurListePersonnes</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisiteurListeBureaux</servlet-name>
+        <url-pattern>/VisiteurListeBureaux</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -64,6 +68,10 @@
     <servlet>
         <servlet-name>VisiteurListePersonnes</servlet-name>
         <servlet-class>Visiteur.VisiteurListePersonnes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisiteurListeBureaux</servlet-name>
+        <servlet-class>Visiteur.VisiteurListeBureaux</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminGestionBureau</servlet-name>
