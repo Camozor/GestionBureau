@@ -2,7 +2,7 @@
 
 /GestionBureau-ejb/
 /GestionBureau-war/
-/dist/
+/dist/gfdeploy/GestionBureau
 /nbproject/
 /build.xml
 
