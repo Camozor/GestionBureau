@@ -1,5 +1,11 @@
 *~
 
+/GestionBureau-ejb/
+/GestionBureau-war/
+/dist/
+/nbproject/
+/build.xml
+
 /GestionBureau/nbproject/
 /GestionBureau/GestionBureau-war/nbproject/
 /GestionBureau/GestionBureau-ejb/nbproject/
