@@ -17,7 +17,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author 11316834
+ * @author Utilisateur
  */
 @Entity
 @Table(name = "BUREAU")
@@ -39,15 +38,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Bureau.findByEtage", query = "SELECT b FROM Bureau b WHERE b.etage = :etage"),
     @NamedQuery(name = "Bureau.findByNbMaxPersonne", query = "SELECT b FROM Bureau b WHERE b.nbMaxPersonne = :nbMaxPersonne")})
 public class Bureau implements Serializable {
-    @OneToMany(mappedBy = "bureauId")
-    private Collection<Personne> personneCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "BUREAU_ID")
     private Integer bureauId;
-    
     @Size(max = 1)
     @Column(name = "BATIMENT")
     private String batiment;
@@ -142,16 +138,7 @@ public class Bureau implements Serializable {
 
     @Override
     public String toString() {
-        return "EntitesGestionBureau.Bureau[ bureauId=" + bureauId + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Personne> getPersonneCollection() {
-        return personneCollection;
-    }
-
-    public void setPersonneCollection(Collection<Personne> personneCollection) {
-        this.personneCollection = personneCollection;
+        return "EntityGestion.Bureau[ bureauId=" + bureauId + " ]";
     }
     
     public String getJoliNom(){
@@ -172,5 +159,4 @@ public class Bureau implements Serializable {
         }
         return lbuautres;
     }
-    
 }

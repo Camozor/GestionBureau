@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author 11316834
+ * @author Utilisateur
  */
 @Entity
 @Table(name = "PERSONNE")
@@ -67,6 +67,8 @@ public class Personne implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "EQUIPE")
     private String equipe;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DATE_DEBUT")
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
@@ -84,12 +86,13 @@ public class Personne implements Serializable {
         this.personneId = personneId;
     }
 
-    public Personne(Integer personneId, String nom, String prenom, String mail, String equipe) {
+    public Personne(Integer personneId, String nom, String prenom, String mail, String equipe, Date dateDebut) {
         this.personneId = personneId;
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.equipe = equipe;
+        this.dateDebut = dateDebut;
     }
 
     public Integer getPersonneId() {
@@ -178,7 +181,7 @@ public class Personne implements Serializable {
 
     @Override
     public String toString() {
-        return "EntitesGestionBureau.Personne[ personneId=" + personneId + " ]";
+        return "EntityGestion.Personne[ personneId=" + personneId + " ]";
     }
     
 }

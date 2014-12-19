@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author 11316834
+ * @author Utilisateur
  */
 @Stateless
 public class BureauFacade extends AbstractFacade<Bureau> implements BureauFacadeLocal {
@@ -22,7 +22,7 @@ public class BureauFacade extends AbstractFacade<Bureau> implements BureauFacade
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
     public BureauFacade() {
         super(Bureau.class);
     }

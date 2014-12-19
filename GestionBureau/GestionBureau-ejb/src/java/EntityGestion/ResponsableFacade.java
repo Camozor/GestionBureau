@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author 11316834
+ * @author Utilisateur
  */
 @Stateless
 public class ResponsableFacade extends AbstractFacade<Responsable> implements ResponsableFacadeLocal {
