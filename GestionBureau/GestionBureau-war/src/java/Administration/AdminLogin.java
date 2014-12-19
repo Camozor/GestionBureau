@@ -45,13 +45,13 @@ public class AdminLogin extends HttpServlet {
         String password = request.getParameter("password");
         
         if(login != null && password != null){
-            Responsable r = responsableFacade.find(login);
+            Responsable r = responsableFacade.findByIden(login);
             if(r.getIdentifiant().equals(login) && r.getMotDePasse().equals(password)){
-                Cookie loginCookie = new Cookie("user",login);
+                Cookie loginCookie = new Cookie("login",login);
 
                 loginCookie.setMaxAge(30*60);
                 response.addCookie(loginCookie);
-                response.sendRedirect("LoginSuccess.jsp");
+                response.sendRedirect("adminloginsucess.jsp");
             }
         }
         
