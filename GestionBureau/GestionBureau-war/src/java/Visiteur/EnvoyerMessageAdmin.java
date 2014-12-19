@@ -12,7 +12,7 @@ import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.time.LocalDate;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -85,7 +85,7 @@ public class EnvoyerMessageAdmin extends HttpServlet {
             String personneId = request.getParameter("p");
             Message m = new Message();
             m.setTexte(message);
-            m.setDateMessage(Date.valueOf(LocalDate.now()));
+            m.setDateMessage((new GregorianCalendar()).getTime());
             Personne p = personneFacade.find(personneId);
             m.setPersonneId(p);
             

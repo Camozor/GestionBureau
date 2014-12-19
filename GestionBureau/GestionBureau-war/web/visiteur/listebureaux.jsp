@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Liste des bureaux</title>
+        <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
         <h2>Gestion Bureau Visiteur</h2>
