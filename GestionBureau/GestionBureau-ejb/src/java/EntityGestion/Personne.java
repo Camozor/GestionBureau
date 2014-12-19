@@ -8,6 +8,7 @@ package EntityGestion;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,6 +43,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Personne.findByDateDebut", query = "SELECT p FROM Personne p WHERE p.dateDebut = :dateDebut"),
     @NamedQuery(name = "Personne.findByDateFin", query = "SELECT p FROM Personne p WHERE p.dateFin = :dateFin")})
 public class Personne implements Serializable {
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personne")
+    private Responsable responsable;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -179,6 +183,14 @@ public class Personne implements Serializable {
     @Override
     public String toString() {
         return "EntitesGestionBureau.Personne[ personneId=" + personneId + " ]";
+    }
+
+    public Responsable getResponsable() {
+        return responsable;
+    }
+
+    public void setResponsable(Responsable responsable) {
+        this.responsable = responsable;
     }
     
 }
