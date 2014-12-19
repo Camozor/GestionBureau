@@ -5,7 +5,6 @@
  */
 package EntityGestion;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -52,10 +51,6 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
         return a;
     }
     
-//    public List<Bureau> findBonsBureaux(String equipe){
-//        List<Bureau> lbons = em.createNamedQuery("Personne.findBonsBureaux").setParameter("equipe", equipe).getResultList();
-//        return lbons;
-//    }
 
     public PersonneFacade() {
         super(Personne.class);

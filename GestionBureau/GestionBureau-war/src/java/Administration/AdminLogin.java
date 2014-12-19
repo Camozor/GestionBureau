@@ -1,15 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Servlet Administration : Se logger in
+ * JSP associé : adminlogin.jsp
  */
 package Administration;
 
 import EntityGestion.Responsable;
 import EntityGestion.ResponsableFacadeLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

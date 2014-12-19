@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Classe d'envoi de mail
  */
 package outils;
 
@@ -31,24 +29,23 @@ public class SuperMail {
 
             
             Properties props = System.getProperties();
-              // -- Attaching to default Session, or we could start a new one --
               props.put("mail.transport.protocol", "smtp" );
               props.put("mail.smtp.starttls.enable","true" );
               props.put("mail.smtp.host",smtpServ);
               props.put("mail.smtp.auth", "true" );
               Authenticator auth = new SMTPAuthenticator();
               Session session = Session.getInstance(props, auth);
-              // -- Create a new message --
+
               Message msg = new MimeMessage(session);
-              // -- Set the FROM and TO fields --
+
               msg.setFrom(new InternetAddress(from));
               msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
               msg.setSubject(subject);
               msg.setText(message);
-              // -- Set some other header information --
-              msg.setHeader("MyMail", "Mr. XYZ" );
+
+              msg.setHeader("Gestion de bureau", "Administrateur" );
               msg.setSentDate(new Date());
-              // -- Send the message --
+
               Transport.send(msg);
               return 0;
         }

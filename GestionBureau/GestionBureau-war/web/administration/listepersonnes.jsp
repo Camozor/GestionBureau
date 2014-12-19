@@ -27,7 +27,7 @@
 
                         
         <j:if test="${lpersonnes.size() > 0}">
-            <table>
+            <table border="1">
                 <thead>
                     <tr>
                         <th>Nom</th>

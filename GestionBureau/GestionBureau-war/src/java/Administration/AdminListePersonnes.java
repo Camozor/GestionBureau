@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Servlet Administration : Lister les personnes
+ * JSP associé : listepersonnes.jsp
  */
 package Administration;
 
 import EntityGestion.Personne;
 import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;

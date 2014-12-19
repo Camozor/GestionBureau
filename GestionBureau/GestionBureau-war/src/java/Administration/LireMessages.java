@@ -1,14 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Servlet Administration : Lire les messages écrits par les employés
+ * JSP associé : liremessages.jsp
  */
 package Administration;
 
 import EntityGestion.Message;
 import EntityGestion.MessageFacadeLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;

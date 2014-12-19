@@ -7,7 +7,6 @@ package outils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  *
@@ -26,8 +25,7 @@ public class HelpDate {
     }
     
     public Boolean obsolete (Date d) {
-        if ((new Date()).compareTo(d) > 0) return true;
-        else                               return false;
+       return ((new Date()).compareTo(d) > 0);
     }
     
 }

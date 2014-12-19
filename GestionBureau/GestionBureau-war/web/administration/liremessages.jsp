@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Lecture des messages</title>
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
@@ -31,7 +31,7 @@
                         <strong>
                             <span>${p.getPrenom()}</span> 
                             <span>${p.getNom()} : </span>
-                            <span>${calendar.getDate(m.getDateMessage())}</span>
+                            <span>${calendar.getJoliDate(m.getDateMessage())}</span>
                         </strong>
                         <p>${m.getTexte()}</p>
                     </li>

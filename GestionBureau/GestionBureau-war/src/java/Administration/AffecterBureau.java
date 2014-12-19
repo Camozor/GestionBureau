@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Servlet Administration : Affecter un bureau à une personne
+ * JSP associé : affecterbureau.jsp
  */
 package Administration;
 
@@ -10,16 +9,12 @@ import EntityGestion.Bureau;
 import EntityGestion.BureauFacadeLocal;
 import EntityGestion.Personne;
 import EntityGestion.PersonneFacadeLocal;
-import com.sun.mail.smtp.SMTPAddressFailedException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.ejb.EJB;
-import javax.mail.MessagingException;
-import javax.mail.SendFailedException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -80,11 +75,13 @@ public class AffecterBureau extends HttpServlet {
         Map<Bureau, Integer> mapProches = new HashMap<>();
         Map<Bureau, Integer> mapAutres = new HashMap<>();
 
-        for(Bureau b : lbuproches)
+        for(Bureau b : lbuproches){
             mapProches.put(b, personneFacade.countBureau(b.getBureauId()));
+        }
 
-        for(Bureau b : lbuautres)
+        for(Bureau b : lbuautres){
             mapAutres.put(b, personneFacade.countBureau(b.getBureauId()));
+        }
 
         request.setAttribute("mapProches", mapProches);
         request.setAttribute("mapAutres", mapAutres);
