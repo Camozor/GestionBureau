@@ -5,6 +5,7 @@
  */
 package Administration;
 
+import outils.SuperMail;
 import EntityGestion.Bureau;
 import EntityGestion.BureauFacadeLocal;
 import EntityGestion.Personne;

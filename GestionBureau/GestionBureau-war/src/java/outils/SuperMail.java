@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Administration;
+package outils;
 
 
 import java.util.Date;
@@ -27,7 +27,7 @@ public class SuperMail {
             String to = email;
             String from = "paul.bismuth44@gmail.com";
             String subject = "Message de l'administrateur de gestion de bureaux : ";
-            String smtpServ = "smtp.gmail.com";
+            String smtpServ = "upn.univ-paris13.fr";
 
             
             Properties props = System.getProperties();
