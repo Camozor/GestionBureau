@@ -44,7 +44,7 @@
                             
                         <j:choose>
                             <j:when test="${p.getDateFin() != null}" >
-                                <j:set value="${p.getDateFin()}" var="dateFin" />
+                                <j:set value="${calendar.getDate(p.getDateFin())}" var="dateFin" />
                             </j:when>
                             <j:otherwise>
                                 <j:set value="Aucune" var="dateFin" />
@@ -56,7 +56,7 @@
                             <td>${p.getNom()}</td>
                             <td>${p.getMail()}</td>
                             <td>${p.getEquipe()}</td>
-                            <td>${p.getDateDebut()}</td>
+                            <td>${calendar.getDate(p.getDateDebut())}</td>
                             <td>${dateFin}</td>
                             <td>${bureau}</td>
                         </tr>
