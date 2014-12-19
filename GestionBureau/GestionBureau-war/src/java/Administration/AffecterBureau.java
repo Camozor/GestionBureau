@@ -22,6 +22,7 @@ import javax.mail.MessagingException;
 import javax.mail.SendFailedException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,38 +49,49 @@ public class AffecterBureau extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            request.setCharacterEncoding("UTF-8");
-            
-            Personne p = null;
-            try{
-                p = personneFacade.find(new Integer(request.getParameter("idpersonne")));
-            }catch(NumberFormatException e){
-                response.sendRedirect("ListePersonnes");
-                return;
+        request.setCharacterEncoding("UTF-8");
+
+        String userName = null;
+        Cookie[] cookies = request.getCookies();
+        if(cookies !=null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("login")) 
+                    userName = cookie.getValue();
             }
-            request.setAttribute("p", p);
-            
-            List<Bureau> lbutous = bureauFacade.findAll();
-            List<Bureau> lbuproches = personneFacade.bureauxEquipe(p.getEquipe());
-            List<Bureau> lbuautres = Bureau.getAutresBureaux(lbutous, lbuproches);
-            
-            Map<Bureau, Integer> mapProches = new HashMap<>();
-            Map<Bureau, Integer> mapAutres = new HashMap<>();
-            
-            for(Bureau b : lbuproches)
-                mapProches.put(b, personneFacade.countBureau(b.getBureauId()));
-            
-            for(Bureau b : lbuautres)
-                mapAutres.put(b, personneFacade.countBureau(b.getBureauId()));
-            
-            request.setAttribute("mapProches", mapProches);
-            request.setAttribute("mapAutres", mapAutres);
-         
-            RequestDispatcher rd = request.getRequestDispatcher("administration/affecterbureau.jsp");
-            
-            rd.forward(request, response);
         }
+        if(userName == null){
+            response.sendRedirect("AdminLogin");
+            return;
+        }
+
+        Personne p = null;
+        try{
+            p = personneFacade.find(new Integer(request.getParameter("idpersonne")));
+        }catch(NumberFormatException e){
+            response.sendRedirect("ListePersonnes");
+            return;
+        }
+        request.setAttribute("p", p);
+
+        List<Bureau> lbutous = bureauFacade.findAll();
+        List<Bureau> lbuproches = personneFacade.bureauxEquipe(p.getEquipe());
+        List<Bureau> lbuautres = Bureau.getAutresBureaux(lbutous, lbuproches);
+
+        Map<Bureau, Integer> mapProches = new HashMap<>();
+        Map<Bureau, Integer> mapAutres = new HashMap<>();
+
+        for(Bureau b : lbuproches)
+            mapProches.put(b, personneFacade.countBureau(b.getBureauId()));
+
+        for(Bureau b : lbuautres)
+            mapAutres.put(b, personneFacade.countBureau(b.getBureauId()));
+
+        request.setAttribute("mapProches", mapProches);
+        request.setAttribute("mapAutres", mapAutres);
+
+        RequestDispatcher rd = request.getRequestDispatcher("administration/affecterbureau.jsp");
+
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

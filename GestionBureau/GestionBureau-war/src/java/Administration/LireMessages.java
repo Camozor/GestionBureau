@@ -13,6 +13,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,13 +39,27 @@ public class LireMessages extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String userName = null;
+        Cookie[] cookies = request.getCookies();
+        if(cookies !=null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("login")) 
+                    userName = cookie.getValue();
+            }
+        }
+        if(userName == null){
+            response.sendRedirect("AdminLogin");
+            return;
+        }
+            
         List<Message> lMessages = messageFacade.findAll();
             
-            request.setAttribute("lMessages", lMessages);
-            request.setAttribute("calendar", new HelpDate());
-            
-            RequestDispatcher rd = request.getRequestDispatcher("administration/liremessages.jsp");
-            rd.forward(request, response);
+        request.setAttribute("lMessages", lMessages);
+        request.setAttribute("calendar", new HelpDate());
+
+        RequestDispatcher rd = request.getRequestDispatcher("administration/liremessages.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

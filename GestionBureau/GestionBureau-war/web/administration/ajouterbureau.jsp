@@ -13,21 +13,10 @@
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
-        <%
-            String userName = null;
-            Cookie[] cookies = request.getCookies();
-            if(cookies !=null){
-                for(Cookie cookie : cookies){
-                    if(cookie.getName().equals("login")) 
-                        userName = cookie.getValue();
-                }
-            }
-            if(userName == null){
-                response.sendRedirect("AdminLogin");
-                return;
-            }
-        %>
         <h2>Gestion Bureau Administration</h2>
+        <form action="AdminLogout" method="POST">
+            <input type ="submit" value="Log out!" />                
+        </form>
         <%@include file="menu.html" %>
         <h1>Ajouter un bureau :</h1>
         
