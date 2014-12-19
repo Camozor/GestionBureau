@@ -10,7 +10,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author 11316834
+ * @author Utilisateur
  */
 @Local
 public interface ResponsableFacadeLocal {
