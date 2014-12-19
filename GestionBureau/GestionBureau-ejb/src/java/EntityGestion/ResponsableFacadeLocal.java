@@ -29,4 +29,5 @@ public interface ResponsableFacadeLocal {
 
     int count();
     
+    public Responsable findByIden(String identifiant);
 }

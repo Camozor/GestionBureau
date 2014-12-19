@@ -9,9 +9,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <style type="text/css" ><%@include file="../css/design.css" %></style>
+        <title>Connexion administration</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h2>Gestion Bureau Admin</h2>
+        <form action="AdminLogin" method="POST" >
+            <label for="login" >Identifiant :</label>
+            <input type="text" name="login" id="login" /> <br />
+            
+            <label for="password" >Mot de passe :</label>
+            <input type="password" name="password" id="password" /> <br />
+            
+            <input type="submit" value="Log in!" />
+        </form>
     </body>
 </html>

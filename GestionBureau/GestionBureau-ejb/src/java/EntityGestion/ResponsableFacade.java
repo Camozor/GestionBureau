@@ -5,6 +5,7 @@
  */
 package EntityGestion;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,4 +28,13 @@ public class ResponsableFacade extends AbstractFacade<Responsable> implements Re
         super(Responsable.class);
     }
     
+    @Override
+    public Responsable findByIden(String identifiant){
+        List<Responsable> lres = findAll();
+        for(Responsable r : lres){
+            if(r.getIdentifiant().equals(identifiant))
+                return r;
+        } 
+        return null;
+    }
 }
