@@ -11,7 +11,9 @@ import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,15 +45,14 @@ public class VisiteurListeBureaux extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         List<Bureau> lBureaux = bureauFacade.findAll();
-        request.setAttribute("lBureaux", lBureaux);
-        
-        ArrayList<Integer> ln = new ArrayList<>();
+        Map<Bureau, Integer> map = new HashMap<>();
         Integer n;
+        
         for(Bureau b : lBureaux){
             n = personneFacade.countBureau(b.getBureauId());
-            ln.add(n);
+            map.put(b, n);
         }
-        request.setAttribute("ln", ln);
+        request.setAttribute("map", map);
         
         RequestDispatcher rd = request.getRequestDispatcher("visiteur/listebureaux.jsp");
         rd.forward(request, response);

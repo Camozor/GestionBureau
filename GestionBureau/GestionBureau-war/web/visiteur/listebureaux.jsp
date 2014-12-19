@@ -4,6 +4,7 @@
     Author     : 10900286
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="j" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
          <%@include file="menu.html" %>
         
         <h1>Affectation du personnel</h1>
-        <j:if test="${lBureaux.size() > 0}">
+        <j:if test="${map.size() > 0}">
             <table>
                 <thead>
                     <tr>
@@ -28,19 +29,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <j:forEach items="${lBureaux}" var="b" >
-                                        
-                        <j:choose>
-                            <j:when test="${b.getBureauId() != null}" >
-                                <j:set value="${b.getSuccintJoliNom()}" var="bureau" />
-                                <j:set value="${b.getNbMaxPersonne()} / " var="nbpersonne" />
-                            </j:when>
-                            <j:otherwise>
-                                <j:set value="Aucun" var="bureau" />
-                                <j:set value="0/0" var="nbpersonne" />
-                            </j:otherwise>
-                        </j:choose>
-                                                    
+                    <j:forEach items="${map}" var="b" >
+
+                        <j:set value="${b.key.getSuccintJoliNom()}" var="bureau" />
+                        <j:set value=" ${b.value} / ${b.key.getNbMaxPersonne()}" var="nbpersonne" />                                                
                         <tr>
                             <td>${bureau}</td>
                             <td>${nbpersonne}</td>
