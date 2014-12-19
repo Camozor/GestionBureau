@@ -32,7 +32,8 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
     @Override
     public int countBureau (Integer b_id) {
         String s = "SELECT COUNT(*) FROM PERSONNE WHERE BUREAU_ID = " 
-                 + b_id.toString();
+                 + b_id.toString()
+                + " AND ((DATE_FIN > CURRENT_DATE) OR (DATE_FIN IS NULL))";
         return (int) em.createNativeQuery(s).getSingleResult();
     }
     
