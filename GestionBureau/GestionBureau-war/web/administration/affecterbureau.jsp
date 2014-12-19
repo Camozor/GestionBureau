@@ -52,6 +52,7 @@
                     <j:set var="checked" value=" checked " />
                 </j:if>
     
+                <span class="bureau" ></span>
                 <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
                        id="id-radio-bu-${bu.bureauId}" />
                 <label for="id-radio-bu-${bu.bureauId}" >${bu.getSuccintJoliNom()} : ${nb} / ${bu.getNbMaxPersonne()}</label>
@@ -72,6 +73,7 @@
                     <j:set var="checked" value=" checked " />
                 </j:if>
     
+                <span class="bureau" ></span>
                 <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
                        id="id-radio-bu-${bu.bureauId}" />
                 <label for="id-radio-bu-${bu.bureauId}" >${bu.getSuccintJoliNom()} : ${nb} / ${bu.getNbMaxPersonne()}</label>
@@ -84,6 +86,7 @@
             <j:if test="${p.bureauId == null}" >
                 <j:set var="checked" value=" checked " />
             </j:if>
+            <span class="bureau" ></span>
             <input type="radio" ${checked} name="bu-id-selected" value="null" 
                        id="id-radio-bu-null" />
             <label for="id-radio-bu-null" >Sans Bureau Fixe</label>

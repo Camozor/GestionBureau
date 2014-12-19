@@ -22,19 +22,24 @@
         <h1>Affectation du personnel</h1>
         <j:if test="${map.size() > 0}">
             <table>
+                <caption>Bureaux</caption>
                 <thead>
                     <tr>
-                        <th>Bureau</th>
+                        <th>Bâtiment</th>
+                        <th>Etage</th>
+                        <th>Numéro</th>
                         <th>Nombre de personnes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <j:forEach items="${map}" var="b" >
 
-                        <j:set value="${b.key.getSuccintJoliNom()}" var="bureau" />
+                        <j:set value="${b.key}" var="bu" />
                         <j:set value=" ${b.value} / ${b.key.getNbMaxPersonne()}" var="nbpersonne" />                                                
                         <tr>
-                            <td>${bureau}</td>
+                            <td>${bu.getBatiment()}</td>
+                            <td>${bu.getEtage()}</td>
+                            <td>${bu.getNumero()}</td>
                             <td>${nbpersonne}</td>
                         </tr>
                     </j:forEach>
