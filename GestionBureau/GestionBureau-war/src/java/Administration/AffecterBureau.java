@@ -10,6 +10,7 @@ import EntityGestion.BureauFacadeLocal;
 import EntityGestion.Personne;
 import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import outils.HelpDate;
 
 /**
  *
@@ -63,7 +65,7 @@ public class AffecterBureau extends HttpServlet {
         try{
             p = personneFacade.find(new Integer(request.getParameter("idpersonne")));
         }catch(NumberFormatException e){
-            response.sendRedirect("ListePersonnes");
+            response.sendRedirect("AdminListePersonnes");
             return;
         }
         request.setAttribute("p", p);
@@ -109,6 +111,7 @@ public class AffecterBureau extends HttpServlet {
     
     private class BureauCompletException extends Exception {}
     private class MemeBureauException extends Exception {}
+    private class PersonneException extends Exception {}
     
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -128,13 +131,24 @@ public class AffecterBureau extends HttpServlet {
         Personne p = null;
         try{
             p = personneFacade.find(new Integer(personneId));
-        }catch(NumberFormatException e){response.sendRedirect("ListePersonnes"); return;}
+        }catch(NumberFormatException e){response.sendRedirect("AdminListePersonnes"); return;}
 
         // Sinon
         try{
 
             Integer bureauActuel = null, bureauDemande = null;
-
+            
+            
+            // Si la date de fin de présence est nulle on peut continuer
+            // sinon il faut vérifier qu'elle n'est pas obsolète
+            HelpDate hd = new HelpDate();
+            Date d = p.getDateFin();
+            if(d != null){
+                if(hd.obsolete(d)){
+                    throw new PersonneException();
+                }
+            }
+                        
             // Si on trouve un bureau avec l'id demandée
             Bureau b = null;
             try{ 
@@ -184,12 +198,16 @@ public class AffecterBureau extends HttpServlet {
             
             doGet(request, response);
         }
-        catch (BureauCompletException e) {
+        catch (BureauCompletException e){
             request.setAttribute("erreur", "Ce bureau est complet !");
             doGet(request, response);
         }
-        catch (MemeBureauException e) {
-            request.setAttribute("erreur", "C'est le même bureau..");
+        catch (MemeBureauException e){
+            request.setAttribute("erreur", "C'est le même bureau...");
+            doGet(request, response);
+        }
+        catch (PersonneException e) {
+            request.setAttribute("erreur", "Personne plus membre...");
             doGet(request, response);
         }
 
