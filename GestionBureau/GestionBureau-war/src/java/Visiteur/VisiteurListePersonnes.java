@@ -40,7 +40,7 @@ public class VisiteurListePersonnes extends HttpServlet {
         
         List<Personne> lPersonnes = personneFacade.findAll();
         request.setAttribute("lpersonnes", lPersonnes);
-        request.setAttribute("calendar", new HelpDate());
+        request.setAttribute("helpD", new HelpDate());
         
         RequestDispatcher rd = request.getRequestDispatcher("visiteur/listepersonnes.jsp");
         rd.forward(request, response);

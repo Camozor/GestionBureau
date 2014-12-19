@@ -66,10 +66,23 @@
                             
                         <j:choose>
                             <j:when test="${p.getDateFin() != null}" >
-                                <j:set value="${calendar.getDate(p.getDateFin())}" var="dateFin" />
+                                <j:set value="${helpD.getJoliDate(p.getDateFin())}" var="dateFin" />
+                                <j:set value="${helpD.obsolete(p.getDateFin())}" var="isObso" />
+                                
+                                <j:choose>
+                                    <j:when test="${isObso == true}" >
+                                        <j:set value="obsolete" var="obsolete" />
+                                    </j:when>
+                                    
+                                    <j:otherwise>
+                                        <j:set value="" var="obsolete" />
+                                    </j:otherwise>
+                                </j:choose>
                             </j:when>
+                            
                             <j:otherwise>
                                 <j:set value="Aucune" var="dateFin" />
+                                <j:set value="" var="obsolete" />
                             </j:otherwise>
                         </j:choose>
                             
@@ -78,11 +91,18 @@
                             <td>${p.getNom()}</td>
                             <td>${p.getMail()}</td>
                             <td>${p.getEquipe()}</td>
-                            <td>${calendar.getDate(p.getDateDebut())}</td>
-                            <td>${dateFin}</td>
-                            <td>${bureau}</td>
+                            <td>${helpD.getJoliDate(p.getDateDebut())}</td>
+                            <td class="${obsolete}" >${dateFin}</td>
+                            <td class="${obsolete}" >${bureau}</td>
                             <td>
-                                <a href="AffecterBureau?idpersonne=${p.personneId}" >Affecter Bureau</a>
+                                <j:choose>
+                                    <j:when test="${isObso == true}" >
+                                        <span>-</span>
+                                    </j:when>
+                                    <j:otherwise>
+                                        <a href="AffecterBureau?idpersonne=${p.personneId}" >Affecter Bureau</a>
+                                    </j:otherwise>
+                                </j:choose>
                             </td>
                         </tr>
                     </j:forEach>

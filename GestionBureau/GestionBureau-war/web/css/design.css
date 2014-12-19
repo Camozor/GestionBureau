@@ -20,11 +20,14 @@ and open the template in the editor.
     list-style-image : url(img/admin.png);   
 }
 
-
 .bureau{
     background-image:url(img/bureau.png);
     background-repeat: no-repeat;
     height:26px;
     width:26px;
     display:inline-block;
+}
+
+.obsolete {
+    font-style: italic;
 }

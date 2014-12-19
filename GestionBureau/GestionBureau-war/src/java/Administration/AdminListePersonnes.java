@@ -44,7 +44,7 @@ public class AdminListePersonnes extends HttpServlet {
           List<Personne> lPersonnes = personneFacade.findAll();
             
             request.setAttribute("lpersonnes", lPersonnes);
-            request.setAttribute("calendar", new HelpDate());
+            request.setAttribute("helpD", new HelpDate());
             
             RequestDispatcher rd = request.getRequestDispatcher("administration/listepersonnes.jsp");
             rd.forward(request, response);
