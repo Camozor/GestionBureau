@@ -16,33 +16,35 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
-        
-        <h1>Affectation du personnel</h1>
-        <j:if test="${map.size() > 0}">
-            <table>
-                <caption>Bureaux</caption>
-                <thead>
-                    <tr>
-                        <th>Bâtiment</th>
-                        <th>Etage</th>
-                        <th>Numéro</th>
-                        <th>Nombre de personnes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <j:forEach items="${map}" var="b" >
-
-                        <j:set value="${b.key}" var="bu" />
-                        <j:set value=" ${b.value} / ${b.key.getNbMaxPersonne()}" var="nbpersonne" />                                                
+        <div class="content" >
+            <h1>Affectation du personnel</h1>
+            <j:if test="${map.size() > 0}">
+                <table>
+                    <caption>Bureaux</caption>
+                    <thead>
                         <tr>
-                            <td>${bu.getBatiment()}</td>
-                            <td>${bu.getEtage()}</td>
-                            <td>${bu.getNumero()}</td>
-                            <td>${nbpersonne}</td>
+                            <th>Bâtiment</th>
+                            <th>Etage</th>
+                            <th>Numéro</th>
+                            <th>Nombre de personnes</th>
                         </tr>
-                    </j:forEach>
-                </tbody>
-            </table>
-        </j:if>
+                    </thead>
+                    <tbody>
+                        <j:forEach items="${map}" var="b" >
+
+                            <j:set value="${b.key}" var="bu" />
+                            <j:set value=" ${b.value} / ${b.key.getNbMaxPersonne()}" var="nbpersonne" />                                                
+                            <tr>
+                                <td>${bu.getBatiment()}</td>
+                                <td>${bu.getEtage()}</td>
+                                <td>${bu.getNumero()}</td>
+                                <td>${nbpersonne}</td>
+                            </tr>
+                        </j:forEach>
+                    </tbody>
+                </table>
+            </j:if>
+            </div>
+        <%@include file="../globalincludes/footer.html" %>
     </body>
 </html>

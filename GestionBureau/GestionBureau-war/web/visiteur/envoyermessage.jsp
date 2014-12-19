@@ -17,20 +17,23 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
-        <h1>Veuillez choisir votre nom</h1>
-        
-        ${msg_envoye == 1 ? "<p>Message envoyé !</p>" : ""}
-       
-        <form action="EnvoyerMessageAdmin" method="POST">
-            <select name="p">
-                <jstl:forEach items="${lpersonnes}" var="p" >
-                    <option value="${p.personneId}">
-                       ${p.prenom} ${p.nom}
-                    </option>                      
-                </jstl:forEach>
-            </select> <br />
-            <textarea name="message" ></textarea> <br />
-            <input type="submit" value="Envoyer !" />
-        </form>
+        <div class="content" >
+            <h1>Veuillez choisir votre nom</h1>
+
+            ${msg_envoye == 1 ? "<p>Message envoyé !</p>" : ""}
+
+            <form action="EnvoyerMessageAdmin" method="POST">
+                <select name="p">
+                    <jstl:forEach items="${lpersonnes}" var="p" >
+                        <option value="${p.personneId}">
+                           ${p.prenom} ${p.nom}
+                        </option>                      
+                    </jstl:forEach>
+                </select> <br />
+                <textarea name="message" ></textarea> <br />
+                <input type="submit" value="Envoyer !" />
+            </form>
+        </div>
+        <%@include file="../globalincludes/footer.html" %>
     </body>
 </html>

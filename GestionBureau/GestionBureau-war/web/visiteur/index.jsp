@@ -15,9 +15,11 @@
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
-        <h1>Gestion Bureau</h1>
-        <%@include file="includes/logoutForm.jsp" %>
-        <%@include file="includes/menu.html" %>
-        <h2>Bienvenue !</h2>
+        <%@include file="includes/header.jsp" %>
+        <div class="content" >
+            <h1>Bienvenue !</h1>
+            <img src="img/bureau.jpg" alt="un beau bureau" />
+        </div>
+        <%@include file="../globalincludes/footer.html" %>
     </body>
 </html>

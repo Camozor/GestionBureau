@@ -15,65 +15,68 @@
     <body>
         <%@include file="includes/header.jsp" %>
         
-        <h1>Affectation du personnel</h1>
-        <j:if test="${lpersonnes.size() > 0}">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Mail</th>
-                        <th>Equipe</th>
-                        <th>Date Début</th>
-                        <th>Date Fin</th>
-                        <th>Bureau</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <j:forEach items="${lpersonnes}" var="p" >
-                        
-                        <j:choose>
-                            <j:when test="${p.getBureauId() != null}" >
-                                <j:set value="${p.getBureauId().getSuccintJoliNom()}" var="bureau" />
-                            </j:when>
-                            <j:otherwise>
-                                <j:set value="Aucun" var="bureau" />
-                            </j:otherwise>
-                        </j:choose>
-                            
-                        <j:choose>
-                            <j:when test="${p.getDateFin() != null}" >
-                                <j:set value="${helpD.getJoliDate(p.getDateFin())}" var="dateFin" />
-                                <j:choose>
-                                    
-                                    <j:when test="${helpD.obsolete(p.getDateFin())}" >
-                                        <j:set value="obsolete" var="obsolete" />
-                                    </j:when>
-                                    
-                                    <j:otherwise>
-                                        <j:set value="" var="obsolete" />
-                                    </j:otherwise>
-                                </j:choose>
-                            </j:when>
-                            
-                            <j:otherwise>
-                                <j:set value="Aucune" var="dateFin" />
-                                <j:set value="" var="obsolete" />
-                            </j:otherwise>
-                        </j:choose>
-                            
+        <div class="content" >
+            <h1>Affectation du personnel</h1>
+            <j:if test="${lpersonnes.size() > 0}">
+                <table>
+                    <thead>
                         <tr>
-                            <td>${p.getPrenom()}</td>
-                            <td>${p.getNom()}</td>
-                            <td>${p.getMail()}</td>
-                            <td>${p.getEquipe()}</td>
-                            <td>${helpD.getJoliDate(p.getDateDebut())}</td>
-                            <td class="${obsolete}" >${dateFin}</td>
-                            <td class="${obsolete}" >${bureau}</td>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Mail</th>
+                            <th>Equipe</th>
+                            <th>Date Début</th>
+                            <th>Date Fin</th>
+                            <th>Bureau</th>
                         </tr>
-                    </j:forEach>
-                </tbody>
-            </table>
-        </j:if>
+                    </thead>
+                    <tbody>
+                        <j:forEach items="${lpersonnes}" var="p" >
+
+                            <j:choose>
+                                <j:when test="${p.getBureauId() != null}" >
+                                    <j:set value="${p.getBureauId().getSuccintJoliNom()}" var="bureau" />
+                                </j:when>
+                                <j:otherwise>
+                                    <j:set value="Aucun" var="bureau" />
+                                </j:otherwise>
+                            </j:choose>
+
+                            <j:choose>
+                                <j:when test="${p.getDateFin() != null}" >
+                                    <j:set value="${helpD.getJoliDate(p.getDateFin())}" var="dateFin" />
+                                    <j:choose>
+
+                                        <j:when test="${helpD.obsolete(p.getDateFin())}" >
+                                            <j:set value="obsolete" var="obsolete" />
+                                        </j:when>
+
+                                        <j:otherwise>
+                                            <j:set value="" var="obsolete" />
+                                        </j:otherwise>
+                                    </j:choose>
+                                </j:when>
+
+                                <j:otherwise>
+                                    <j:set value="Aucune" var="dateFin" />
+                                    <j:set value="" var="obsolete" />
+                                </j:otherwise>
+                            </j:choose>
+
+                            <tr>
+                                <td>${p.getPrenom()}</td>
+                                <td>${p.getNom()}</td>
+                                <td>${p.getMail()}</td>
+                                <td>${p.getEquipe()}</td>
+                                <td>${helpD.getJoliDate(p.getDateDebut())}</td>
+                                <td class="${obsolete}" >${dateFin}</td>
+                                <td class="${obsolete}" >${bureau}</td>
+                            </tr>
+                        </j:forEach>
+                    </tbody>
+                </table>
+            </j:if>
+        </div>
+        <%@include file="../globalincludes/footer.html" %>
     </body>
 </html>

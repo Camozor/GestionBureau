@@ -16,21 +16,24 @@
     </head>
     <body>
         <%@include file="includes/titleSite.html" %>
-        
-        <h1>Authentification</h1>
-        
-        <j:if test="${erreur.length() > 0}" >
-            <p><strong>Erreur : </strong>${erreur}</p>
-        </j:if>
-        
-        <form action="AdminLogin" method="POST" >
-            <label for="login" >Identifiant :</label>
-            <input type="text" name="login" id="login" /> <br />
-            
-            <label for="password" >Mot de passe :</label>
-            <input type="password" name="password" id="password" /> <br />
-            
-            <input type="submit" value="Log in!" />
-        </form>
+        <div class="content" >
+
+            <h1>Authentification</h1>
+
+            <j:if test="${erreur.length() > 0}" >
+                <p><strong>Erreur : </strong>${erreur}</p>
+            </j:if>
+
+            <form action="AdminLogin" method="POST" >
+                <label for="login" >Identifiant :</label>
+                <input type="text" name="login" id="login" /> <br />
+
+                <label for="password" >Mot de passe :</label>
+                <input type="password" name="password" id="password" /> <br />
+
+                <input type="submit" value="Log in!" />
+            </form>
+        </div>
+        <%@include file="../globalincludes/footer.html" %>
     </body>
 </html>

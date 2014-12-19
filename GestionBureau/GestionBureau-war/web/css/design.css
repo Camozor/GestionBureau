@@ -8,6 +8,76 @@ and open the template in the editor.
     Author     : 10900286
 */
 
+body {
+    margin: 0;
+}
+
+
+.menu a{
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color:#489fa3;
+}
+
+.menu li a{
+    display:block;
+    padding:5px;
+    height:20px;
+}
+
+li:hover {
+    cursor:pointer;
+    background-color:#BD7CF2;
+}
+li:hover a {
+    color:white;
+}
+
+h2:before{
+    content:url("img/bureau.png") "  ";
+}
+
+.footer {
+    
+    background-color: #feb33b;
+    margin-top:35px;
+    padding:15px 10px;
+    text-align: center;
+}
+
+.content, .menu {
+    margin-left: 15px;
+}
+
+.menu {
+   width: 350px;
+    border-bottom: 7px;
+    border-bottom-color: #BD7CF2;
+    border-bottom-style: solid;
+}
+
+.menu h2 {
+    width: auto;
+    background-color: #BD7CF2;
+    padding:5px;
+}
+
+.banniere {
+    background-color: #feb33b;
+    margin:0;
+    padding:15px 10px;
+    text-align: center;
+}
+
+.logout {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
 .canard-list li {
     list-style-image : url(img/duck.png);   
 }
@@ -34,4 +104,20 @@ and open the template in the editor.
 
 table, td, th {
     border: 1px solid black;
+}
+table {
+    border-spacing: 5px;
+    border:none;
+}
+td, th{
+    padding: 3px 5px;
+}
+
+textarea {
+    width: 350px;
+    height: 150px;
+}
+
+th {
+     background-color: #feb33b;
 }

@@ -17,81 +17,84 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
-        <h1>Affecter un bureau :</h1>
-        <img src="img/bubu.jpg" alt="Bruno le bureau" title="Bruno le bureau" />
-        <br />
-        
-        <h3>${p.prenom} ${p.nom}</h3>
-        <p>
-            <span>Actuellement dans le  bureau : ${p.bureauId.getJoliNom()}</span> <br />
-            <span>Equipe : ${p.equipe}</span>
-        </p>
-        
-   
-        <j:if test="${bureau_change} = 1" >
-            <p>Changement effectué !</p>
-        </j:if>
-
-        
-        <j:if test="${erreur.length() > 0}" >
-            <p><strong>Erreur : </strong>${erreur}</p>
-        </j:if>
-        
-            
-        <form action="AffecterBureau" method="POST" >
-            
-            Liste des bureaux proches de ceux des équipiers : <br />
-            
-            <j:forEach items="${mapProches}" var="b" >
-                <j:set value="${b.key}" var="bu" />
-                <j:set value="${b.value}" var="nb" /> 
-                
-                <j:set var="checked" value="" />
-                <j:if test="${p.bureauId.bureauId == bu.bureauId}" >
-                    <j:set var="checked" value=" checked " />
-                </j:if>
-    
-                <span class="bureau" ></span>
-                <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
-                       id="id-radio-bu-${bu.bureauId}" />
-                <label for="id-radio-bu-${bu.bureauId}" >${bu.getSuccintJoliNom()} : ${nb} / ${bu.getNbMaxPersonne()}</label>
-                <br />
-                
-            </j:forEach>
-                
-                <input type="hidden" name="idpersonne" value="${p.personneId}" />
-                
-            Autres bureaux : <br />
-            
-            <j:forEach items="${mapAutres}" var="b" >
-                <j:set value="${b.key}" var="bu" />
-                <j:set value="${b.value}" var="nb" /> 
-                
-                <j:set var="checked" value="" />  
-                <j:if test="${p.bureauId.bureauId == bu.bureauId}" >
-                    <j:set var="checked" value=" checked " />
-                </j:if>
-    
-                <span class="bureau" ></span>
-                <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
-                       id="id-radio-bu-${bu.bureauId}" />
-                <label for="id-radio-bu-${bu.bureauId}" >${bu.getSuccintJoliNom()} : ${nb} / ${bu.getNbMaxPersonne()}</label>
-                <br />
-                
-                
-            </j:forEach>
-                
-            <j:set var="checked" value="" />  
-            <j:if test="${p.bureauId == null}" >
-                <j:set var="checked" value=" checked " />
-            </j:if>
-            <span class="bureau" ></span>
-            <input type="radio" ${checked} name="bu-id-selected" value="null" 
-                       id="id-radio-bu-null" />
-            <label for="id-radio-bu-null" >Sans Bureau Fixe</label>
+        <div class="content" >
+            <h1>Affecter un bureau :</h1>
+            <img src="img/bubu.jpg" alt="Bruno le bureau" title="Bruno le bureau" />
             <br />
-              
-            <input type="submit" value="Changer" />
-        </form>
+
+            <h3>${p.prenom} ${p.nom}</h3>
+            <p>
+                <span>Actuellement dans le  bureau : ${p.bureauId.getJoliNom()}</span> <br />
+                <span>Equipe : ${p.equipe}</span>
+            </p>
+
+
+            <j:if test="${bureau_change} = 1" >
+                <p>Changement effectué !</p>
+            </j:if>
+
+
+            <j:if test="${erreur.length() > 0}" >
+                <p><strong>Erreur : </strong>${erreur}</p>
+            </j:if>
+
+
+            <form action="AffecterBureau" method="POST" >
+
+                Liste des bureaux proches de ceux des équipiers : <br />
+
+                <j:forEach items="${mapProches}" var="b" >
+                    <j:set value="${b.key}" var="bu" />
+                    <j:set value="${b.value}" var="nb" /> 
+
+                    <j:set var="checked" value="" />
+                    <j:if test="${p.bureauId.bureauId == bu.bureauId}" >
+                        <j:set var="checked" value=" checked " />
+                    </j:if>
+
+                    <span class="bureau" ></span>
+                    <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
+                           id="id-radio-bu-${bu.bureauId}" />
+                    <label for="id-radio-bu-${bu.bureauId}" >${bu.getSuccintJoliNom()} : ${nb} / ${bu.getNbMaxPersonne()}</label>
+                    <br />
+
+                </j:forEach>
+
+                    <input type="hidden" name="idpersonne" value="${p.personneId}" />
+
+                Autres bureaux : <br />
+
+                <j:forEach items="${mapAutres}" var="b" >
+                    <j:set value="${b.key}" var="bu" />
+                    <j:set value="${b.value}" var="nb" /> 
+
+                    <j:set var="checked" value="" />  
+                    <j:if test="${p.bureauId.bureauId == bu.bureauId}" >
+                        <j:set var="checked" value=" checked " />
+                    </j:if>
+
+                    <span class="bureau" ></span>
+                    <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
+                           id="id-radio-bu-${bu.bureauId}" />
+                    <label for="id-radio-bu-${bu.bureauId}" >${bu.getSuccintJoliNom()} : ${nb} / ${bu.getNbMaxPersonne()}</label>
+                    <br />
+
+
+                </j:forEach>
+
+                <j:set var="checked" value="" />  
+                <j:if test="${p.bureauId == null}" >
+                    <j:set var="checked" value=" checked " />
+                </j:if>
+                <span class="bureau" ></span>
+                <input type="radio" ${checked} name="bu-id-selected" value="null" 
+                           id="id-radio-bu-null" />
+                <label for="id-radio-bu-null" >Sans Bureau Fixe</label>
+                <br />
+
+                <input type="submit" value="Changer" />
+            </form>
+        </div>
+        <%@include file="../globalincludes/footer.html" %>
     </body>
 </html>
