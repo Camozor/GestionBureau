@@ -4,7 +4,6 @@
     Author     : Camille
 --%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

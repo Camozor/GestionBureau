@@ -51,7 +51,8 @@ public class AdminLogin extends HttpServlet {
 
                 loginCookie.setMaxAge(30*60);
                 response.addCookie(loginCookie);
-                response.sendRedirect("adminloginsucess.jsp");
+                response.sendRedirect("administration/adminloginsucess.jsp");
+                return;
             }
         }
         
