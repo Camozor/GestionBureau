@@ -41,24 +41,6 @@ public class AdminLogin extends HttpServlet {
         
         RequestDispatcher rd = request.getRequestDispatcher("administration/adminlogin.jsp");
         
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-        
-        if(login != null && password != null){
-            Responsable r = responsableFacade.findByIden(login);
-            try {
-                if(r.getIdentifiant().equals(login) && r.getMotDePasse().equals(password)){
-                    Cookie loginCookie = new Cookie("login",login);
-
-                    loginCookie.setMaxAge(30*60);
-                    response.addCookie(loginCookie);
-                    response.sendRedirect("Administration");
-                    return;
-                }
-            }
-            catch (NullPointerException e) {}
-        }
-        
         rd.forward(request, response);
     }
 
@@ -88,6 +70,26 @@ public class AdminLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        
+        if(login != null && password != null){
+            Responsable r = responsableFacade.findByIden(login);
+            try {
+                if(r.getIdentifiant().equals(login) && r.getMotDePasse().equals(password)){
+                    Cookie loginCookie = new Cookie("login",login);
+
+                    loginCookie.setMaxAge(30*60);
+                    response.addCookie(loginCookie);
+                    response.sendRedirect("Administration");
+                    return;
+                }
+            }
+            catch (NullPointerException e) {}
+        }
+        
+        request.setAttribute("erreur", "Connexion impossible");
         processRequest(request, response);
     }
 

@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="j" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +16,11 @@
     </head>
     <body>
         <h2>Gestion Bureau Admin</h2>
+        
+        <j:if test="${erreur.length() > 0}" >
+            <p><strong>Erreur : </strong>${erreur}</p>
+        </j:if>
+        
         <form action="AdminLogin" method="POST" >
             <label for="login" >Identifiant :</label>
             <input type="text" name="login" id="login" /> <br />
