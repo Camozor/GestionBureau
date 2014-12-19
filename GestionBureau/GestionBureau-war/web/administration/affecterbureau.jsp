@@ -16,7 +16,7 @@
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
-        <%
+       <%
             String userName = null;
             Cookie[] cookies = request.getCookies();
             if(cookies !=null){
@@ -25,7 +25,10 @@
                         userName = cookie.getValue();
                 }
             }
-            if(userName == null) response.sendRedirect("administration/adminlogin.jsp");
+            if(userName == null){
+                response.sendRedirect("AdminLogin");
+                return;
+            }
         %>
         <h2>Gestion Bureau Admin</h2>
         <%@include file="menu.html" %>

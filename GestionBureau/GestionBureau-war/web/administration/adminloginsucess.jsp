@@ -21,7 +21,10 @@
                         userName = cookie.getValue();
                 }
             }
-            if(userName == null) response.sendRedirect("administration/adminlogin.jsp");
+            if(userName == null){
+                response.sendRedirect("AdminLogin");
+                return;
+            }
         %>
         Yeah !
     </body>

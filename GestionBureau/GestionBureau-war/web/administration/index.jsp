@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Index</title>
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
@@ -24,7 +24,10 @@
                         userName = cookie.getValue();
                 }
             }
-            if(userName == null) response.sendRedirect("administration/adminlogin.jsp");
+            if(userName == null){
+                response.sendRedirect("AdminLogin");
+                return;
+            }
         %>
         <h1>Gestion Bureau Administration</h1>
         <%@include file="menu.html" %>

@@ -22,7 +22,10 @@
                         userName = cookie.getValue();
                 }
             }
-            if(userName == null) response.sendRedirect("administration/adminlogin.jsp");
+            if(userName == null){
+                response.sendRedirect("AdminLogin");
+                return;
+            }
         %>
         <h2>Gestion Bureau Administration</h2>
         <%@include file="menu.html" %>
