@@ -72,6 +72,7 @@
                             <j:otherwise>
                                 <j:set value="Aucune" var="dateFin" />
                                 <j:set value="" var="obsolete" />
+                                <j:set value="false" var="isObso" />
                             </j:otherwise>
                         </j:choose>
                             
