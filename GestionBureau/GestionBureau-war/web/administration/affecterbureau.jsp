@@ -16,6 +16,17 @@
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
+        <%
+            String userName = null;
+            Cookie[] cookies = request.getCookies();
+            if(cookies !=null){
+                for(Cookie cookie : cookies){
+                    if(cookie.getName().equals("login")) 
+                        userName = cookie.getValue();
+                }
+            }
+            if(userName == null) response.sendRedirect("administration/adminlogin.jsp");
+        %>
         <h2>Gestion Bureau Admin</h2>
         <%@include file="menu.html" %>
         <h1>Affecter un bureau :</h1>
