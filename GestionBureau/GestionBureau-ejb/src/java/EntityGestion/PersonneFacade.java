@@ -29,6 +29,11 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
         return find(new Integer(id));
     }
     
+    /*
+     * Compte le nombre de personnes dans un bureau d'identifiant b_id
+     * 
+     */
+    
     @Override
     public int countBureau (Integer b_id) {
         String s = "SELECT COUNT(*) FROM PERSONNE WHERE BUREAU_ID = " 
@@ -36,6 +41,11 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
                 + " AND ((DATE_FIN > CURRENT_DATE) OR (DATE_FIN IS NULL))";
         return (int) em.createNativeQuery(s).getSingleResult();
     }
+    
+    /*
+     * Retourne une liste de bureaux proches pour une equipe
+     *
+     */
     
     @Override
     public List<Bureau> bureauxEquipe (String equipe) {
@@ -49,7 +59,6 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
             "WHERE P.EQUIPE = '" + equipe+"' " +
             "AND ((P.DATE_FIN > CURRENT_DATE) OR (P.DATE_FIN IS NULL))";
                 
-        
         List<Bureau> a = em.createNativeQuery(s, Bureau.class).getResultList();
         return a;
     }
