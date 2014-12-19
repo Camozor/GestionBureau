@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Servlet Visiteur : Envoyer un message aux administrateurs en sélectionnant son nom
+ * JSP associé : visiteur/envoyermessage.jsp
  */
 package Visiteur;
 
@@ -11,7 +10,6 @@ import EntityGestion.Personne;
 import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.ejb.EJB;

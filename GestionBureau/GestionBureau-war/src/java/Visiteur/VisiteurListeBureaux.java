@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Servlet Visiteur : Lister les bureaux avec le nombre de personnes affectées à chaque
+ * bureau et le nombre maximum de personnes par bureau
+ * JSP associé : visiteur/listebureaux.jsp
  */
 package Visiteur;
 
@@ -9,8 +9,6 @@ import EntityGestion.Bureau;
 import EntityGestion.BureauFacadeLocal;
 import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

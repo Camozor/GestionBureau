@@ -1,5 +1,6 @@
 /*
  * Classe d'envoi de mail
+ * Expéditeur : paul.bismuth44@gmail.com
  */
 package outils;
 
@@ -51,7 +52,6 @@ public class SuperMail {
         }
         catch (Exception ex)
         {
-          ex.printStackTrace();
           System.out.println("Exception "+ex);
           return -1;
         }
@@ -60,8 +60,8 @@ public class SuperMail {
     private class SMTPAuthenticator extends javax.mail.Authenticator {
         @Override
         public PasswordAuthentication getPasswordAuthentication() {
-            String username =  "paul.bismuth44";           // specify your email id here (sender's email id)
-            String password = "pass44word";                                      // specify your password here
+            String username =  "paul.bismuth44";
+            String password = "pass44word";
             return new PasswordAuthentication(username, password);
         }
     }
