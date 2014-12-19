@@ -28,7 +28,7 @@
                         <strong>
                             <span>${p.getPrenom()}</span> 
                             <span>${p.getNom()} : </span>
-                            <span>${calendar.getDateTime(m.getDateMessage())}</span>
+                            <span>${calendar.getDate(m.getDateMessage())}</span>
                         </strong>
                         <p>${m.getTexte()}</p>
                     </li>
