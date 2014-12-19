@@ -17,11 +17,7 @@
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
-        <h2>Gestion Bureau Administration</h2>
-        <form action="AdminLogout" method="POST">
-            <input type ="submit" value="Log out!" />                
-        </form>
-        <%@include file="menu.html" %>
+        <%@include file="includes/header.jsp" %>
         <h1>Lire les messages</h1>
         <j:if test="${lMessages.size() > 0}" >
             <ul class="mail-list" >

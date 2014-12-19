@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import outils.Login;
 
 /**
  *
@@ -32,6 +33,8 @@ public class Index extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+            Login.isAdmin(request, response);
+            
             RequestDispatcher rd = request.getRequestDispatcher("visiteur/index.jsp");
             rd.forward(request, response);
     }

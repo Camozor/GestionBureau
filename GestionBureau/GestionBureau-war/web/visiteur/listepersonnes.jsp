@@ -13,12 +13,11 @@
         <title>Liste des personnes</title>
     </head>
     <body>
-        <h2>Gestion Bureau Visiteur</h2>
-        <%@include file="menu.html" %>
+        <%@include file="includes/header.jsp" %>
         
         <h1>Affectation du personnel</h1>
         <j:if test="${lpersonnes.size() > 0}">
-            <table border="1">
+            <table>
                 <thead>
                     <tr>
                         <th>Nom</th>

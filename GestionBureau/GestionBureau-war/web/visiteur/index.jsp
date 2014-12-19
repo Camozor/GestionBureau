@@ -16,7 +16,8 @@
     </head>
     <body>
         <h1>Gestion Bureau</h1>
-        <%@include file="menu.html" %>
+        <%@include file="includes/logoutForm.jsp" %>
+        <%@include file="includes/menu.html" %>
         <h2>Bienvenue !</h2>
     </body>
 </html>

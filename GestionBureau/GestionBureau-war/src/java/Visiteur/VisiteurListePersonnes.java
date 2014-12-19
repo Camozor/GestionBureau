@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import outils.HelpDate;
+import outils.Login;
 
 /**
  *
@@ -41,6 +42,7 @@ public class VisiteurListePersonnes extends HttpServlet {
         List<Personne> lPersonnes = personneFacade.findAll();
         request.setAttribute("lpersonnes", lPersonnes);
         request.setAttribute("helpD", new HelpDate());
+        Login.isAdmin(request, response);
         
         RequestDispatcher rd = request.getRequestDispatcher("visiteur/listepersonnes.jsp");
         rd.forward(request, response);

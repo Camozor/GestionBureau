@@ -15,7 +15,9 @@
         <title>Connexion administration</title>
     </head>
     <body>
-        <h2>Gestion Bureau Admin</h2>
+        <%@include file="includes/titleSite.html" %>
+        
+        <h1>Authentification</h1>
         
         <j:if test="${erreur.length() > 0}" >
             <p><strong>Erreur : </strong>${erreur}</p>

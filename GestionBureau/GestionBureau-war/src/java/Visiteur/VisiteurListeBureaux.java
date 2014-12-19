@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import outils.Login;
 
 /**
  *
@@ -43,6 +44,9 @@ public class VisiteurListeBureaux extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        
+        Login.isAdmin(request, response);
         
         List<Bureau> lBureaux = bureauFacade.findAll();
         Map<Bureau, Integer> map = new HashMap<>();

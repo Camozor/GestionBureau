@@ -16,8 +16,7 @@
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
-        <h2>Gestion Bureau</h2>
-        <%@include file="menu.html" %>
+        <%@include file="includes/header.jsp" %>
         <h1>Veuillez choisir votre nom</h1>
         
         ${msg_envoye == 1 ? "<p>Message envoyé !</p>" : ""}

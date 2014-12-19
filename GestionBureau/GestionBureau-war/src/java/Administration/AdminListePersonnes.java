@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import outils.HelpDate;
+import outils.Login;
 
 /**
  *
@@ -39,19 +40,8 @@ public class AdminListePersonnes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-          
-        String userName = null;
-        Cookie[] cookies = request.getCookies();
-        if(cookies !=null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("login")) 
-                    userName = cookie.getValue();
-            }
-        }
-        if(userName == null){
-            response.sendRedirect("AdminLogin");
-            return;
-        }
+        
+        if (Login.nonAutorise(request, response)) return;
 
         List<Personne> lPersonnes = personneFacade.findAll();
             

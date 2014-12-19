@@ -16,10 +16,8 @@
     </head>
     <body>
         <h1>Gestion Bureau Administration</h1>
-        <form action="AdminLogout" method="POST">
-            <input type ="submit" value="Log out!" />                
-        </form>
-        <%@include file="menu.html" %>
+        <%@include file="includes/logoutForm.html" %>
+        <%@include file="includes/menu.html" %>
         <h2>Bienvenue Administrateur !</h2> 
     </body>
 </html>

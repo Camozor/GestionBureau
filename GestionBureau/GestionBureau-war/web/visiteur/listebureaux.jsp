@@ -15,9 +15,7 @@
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
-        <h2>Gestion Bureau Visiteur</h2>
-        
-         <%@include file="menu.html" %>
+        <%@include file="includes/header.jsp" %>
         
         <h1>Affectation du personnel</h1>
         <j:if test="${map.size() > 0}">

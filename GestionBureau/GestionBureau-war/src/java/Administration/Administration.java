@@ -11,6 +11,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import outils.Login;
 
 /**
  *
@@ -31,18 +32,7 @@ public class Administration extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-            String userName = null;
-            Cookie[] cookies = request.getCookies();
-            if(cookies !=null){
-                for(Cookie cookie : cookies){
-                    if(cookie.getName().equals("login")) 
-                        userName = cookie.getValue();
-                }
-            }
-            if(userName == null){
-                response.sendRedirect("AdminLogin");
-                return;
-            }
+            if (Login.nonAutorise(request, response)) return;
 
             RequestDispatcher rd = request.getRequestDispatcher("administration/index.jsp");
             rd.forward(request, response);

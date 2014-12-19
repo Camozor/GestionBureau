@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import outils.Login;
 
 /**
  *
@@ -48,6 +49,7 @@ public class EnvoyerMessageAdmin extends HttpServlet {
             List<Personne> lPersonnes = personneFacade.findAll();
             
             request.setAttribute("lpersonnes", lPersonnes);
+            Login.isAdmin(request, response);
             
             RequestDispatcher rd = request.getRequestDispatcher("visiteur/envoyermessage.jsp");
             rd.forward(request, response);

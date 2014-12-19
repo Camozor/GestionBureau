@@ -16,11 +16,7 @@
         <style type="text/css" ><%@include file="../css/design.css" %></style>
     </head>
     <body>
-        <h2>Gestion Bureau Administration</h2>
-        <form action="AdminLogout" method="POST">
-            <input type ="submit" value="Log out!" />                
-        </form>
-        <%@include file="menu.html" %>
+        <%@include file="includes/header.jsp" %>
         <h1>Affecter un bureau :</h1>
         <img src="img/bubu.jpg" alt="Bruno le bureau" title="Bruno le bureau" />
         <br />

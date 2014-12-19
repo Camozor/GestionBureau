@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import outils.HelpDate;
+import outils.Login;
 
 /**
  *
@@ -48,18 +49,7 @@ public class AffecterBureau extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
 
-        String userName = null;
-        Cookie[] cookies = request.getCookies();
-        if(cookies !=null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("login")) 
-                    userName = cookie.getValue();
-            }
-        }
-        if(userName == null){
-            response.sendRedirect("AdminLogin");
-            return;
-        }
+        if (Login.nonAutorise(request, response)) return;
 
         Personne p = null;
         try{
