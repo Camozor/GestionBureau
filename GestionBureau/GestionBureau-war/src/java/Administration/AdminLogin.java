@@ -46,14 +46,17 @@ public class AdminLogin extends HttpServlet {
         
         if(login != null && password != null){
             Responsable r = responsableFacade.findByIden(login);
-            if(r.getIdentifiant().equals(login) && r.getMotDePasse().equals(password)){
-                Cookie loginCookie = new Cookie("login",login);
+            try {
+                if(r.getIdentifiant().equals(login) && r.getMotDePasse().equals(password)){
+                    Cookie loginCookie = new Cookie("login",login);
 
-                loginCookie.setMaxAge(30*60);
-                response.addCookie(loginCookie);
-                response.sendRedirect("Administration");
-                return;
+                    loginCookie.setMaxAge(30*60);
+                    response.addCookie(loginCookie);
+                    response.sendRedirect("Administration");
+                    return;
+                }
             }
+            catch (NullPointerException e) {}
         }
         
         rd.forward(request, response);
