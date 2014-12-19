@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="j" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
@@ -40,58 +40,63 @@
         </p>
         
    
-        <jstl:if test="${bureau_change} = 1" >
+        <j:if test="${bureau_change} = 1" >
             <p>Changement effectué !</p>
-        </jstl:if>
+        </j:if>
 
         
-        <jstl:if test="${erreur.length() > 0}" >
+        <j:if test="${erreur.length() > 0}" >
             <p><strong>Erreur : </strong>${erreur}</p>
-        </jstl:if>
+        </j:if>
         
             
         <form action="AffecterBureau" method="POST" >
             
             Liste des bureaux proches de ceux des équipiers : <br />
             
-            <jstl:forEach items="${lbuproches}" var="bu" >
+            <j:forEach items="${mapProches}" var="b" >
+                <j:set value="${b.key}" var="bu" />
+                <j:set value="${b.value}" var="nb" /> 
                 
-                <jstl:set var="checked" value="" />
-                
-                <jstl:if test="${p.bureauId.bureauId == bu.bureauId}" >
-                    <jstl:set var="checked" value=" checked " />
-                </jstl:if>
+                <j:set var="checked" value="" />
+                <j:if test="${p.bureauId.bureauId == bu.bureauId}" >
+                    <j:set var="checked" value=" checked " />
+                </j:if>
     
                 <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
                        id="id-radio-bu-${bu.bureauId}" />
-                <label for="id-radio-bu-${bu.bureauId}" >${bu.batiment} ${bu.etage} ${bu.numero}</label>
+                <label for="id-radio-bu-${bu.bureauId}" >${bu.getSuccintJoliNom()} : ${nb} / ${bu.getNbMaxPersonne()}</label>
                 <br />
                 
-            </jstl:forEach>
+            </j:forEach>
                 
                 <input type="hidden" name="idpersonne" value="${p.personneId}" />
                 
             Autres bureaux : <br />
             
-            <jstl:forEach items="${lbuautres}" var="bu" >
+            <j:forEach items="${mapAutres}" var="b" >
+                <j:set value="${b.key}" var="bu" />
+                <j:set value="${b.value}" var="nb" /> 
                 
-                <jstl:set var="checked" value="" />
-                
-                <jstl:if test="${p.bureauId.bureauId == bu.bureauId}" >
-                    <jstl:set var="checked" value=" checked " />
-                </jstl:if>
+                <j:set var="checked" value="" />  
+                <j:if test="${p.bureauId.bureauId == bu.bureauId}" >
+                    <j:set var="checked" value=" checked " />
+                </j:if>
     
                 <input type="radio" ${checked} name="bu-id-selected" value="${bu.bureauId}" 
                        id="id-radio-bu-${bu.bureauId}" />
-                <label for="id-radio-bu-${bu.bureauId}" >${bu.batiment} ${bu.etage} ${bu.numero}</label>
+                <label for="id-radio-bu-${bu.bureauId}" >${bu.getSuccintJoliNom()} : ${nb} / ${bu.getNbMaxPersonne()}</label>
                 <br />
                 
                 
-            </jstl:forEach>
+            </j:forEach>
                 
-                
-            <input type="radio" name="bu-id-selected" value="null" 
-                       id="id-radio-bu-null" checked />
+            <j:set var="checked" value="" />  
+            <j:if test="${p.bureauId == null}" >
+                <j:set var="checked" value=" checked " />
+            </j:if>
+            <input type="radio" ${checked} name="bu-id-selected" value="null" 
+                       id="id-radio-bu-null" />
             <label for="id-radio-bu-null" >Sans Bureau Fixe</label>
             <br />
               

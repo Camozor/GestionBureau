@@ -10,11 +10,16 @@ import EntityGestion.Bureau;
 import EntityGestion.BureauFacadeLocal;
 import EntityGestion.Personne;
 import EntityGestion.PersonneFacadeLocal;
+import com.sun.mail.smtp.SMTPAddressFailedException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import javax.ejb.EJB;
+import javax.mail.MessagingException;
+import javax.mail.SendFailedException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -55,12 +60,21 @@ public class AffecterBureau extends HttpServlet {
             }
             request.setAttribute("p", p);
             
-            List<Bureau> lbuproches = personneFacade.bureauxEquipe(p.getEquipe());
-            request.setAttribute("lbuproches", lbuproches);
-            
             List<Bureau> lbutous = bureauFacade.findAll();
+            List<Bureau> lbuproches = personneFacade.bureauxEquipe(p.getEquipe());
             List<Bureau> lbuautres = Bureau.getAutresBureaux(lbutous, lbuproches);
-            request.setAttribute("lbuautres", lbuautres);
+            
+            Map<Bureau, Integer> mapProches = new HashMap<>();
+            Map<Bureau, Integer> mapAutres = new HashMap<>();
+            
+            for(Bureau b : lbuproches)
+                mapProches.put(b, personneFacade.countBureau(b.getBureauId()));
+            
+            for(Bureau b : lbuautres)
+                mapAutres.put(b, personneFacade.countBureau(b.getBureauId()));
+            
+            request.setAttribute("mapProches", mapProches);
+            request.setAttribute("mapAutres", mapAutres);
          
             RequestDispatcher rd = request.getRequestDispatcher("administration/affecterbureau.jsp");
             
@@ -145,16 +159,20 @@ public class AffecterBureau extends HttpServlet {
             String message;
             if (bureauDemande == null) { message = "Vous êtes viré de votre bureau !"; }
             else { message = "nouvelle affectation :" + b.getJoliNom(); }
-
+            
             // Envoyer le mail
-            SuperMail m = new SuperMail();
-            m.sendMail(p.getMail(), message);
-
+            try {
+                SuperMail m = new SuperMail();
+                m.sendMail(p.getMail(), message);
+            }
+            catch (Exception e){}
+            
             // Persister
             personneFacade.edit(p);
 
             // Fin : succès
             request.setAttribute("bureau_change", 1);
+            
             doGet(request, response);
         }
         catch (BureauCompletException e) {
