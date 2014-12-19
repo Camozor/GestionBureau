@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,19 @@ public class Administration extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+            String userName = null;
+            Cookie[] cookies = request.getCookies();
+            if(cookies !=null){
+                for(Cookie cookie : cookies){
+                    if(cookie.getName().equals("login")) 
+                        userName = cookie.getValue();
+                }
+            }
+            if(userName == null){
+                response.sendRedirect("AdminLogin");
+                return;
+            }
 
             RequestDispatcher rd = request.getRequestDispatcher("administration/index.jsp");
             rd.forward(request, response);

@@ -5,29 +5,19 @@
  */
 package Administration;
 
-import EntityGestion.Personne;
-import EntityGestion.PersonneFacadeLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import outils.HelpDate;
 
 /**
  *
  * @author 10900286
  */
-public class AdminListePersonnes extends HttpServlet {
-    @EJB
-    private PersonneFacadeLocal personneFacade;
+public class AdminLogout extends HttpServlet {
 
-/*
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,34 +27,14 @@ public class AdminListePersonnes extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String userName = null;
-        Cookie[] cookies = request.getCookies();
-        if(cookies !=null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("login")) 
-                    userName = cookie.getValue();
-            }
-        }
-        if(userName == null){
-            response.sendRedirect("AdminLogin");
-            return;
-        }
-
-        List<Personne> lPersonnes = personneFacade.findAll();
-
-        request.setAttribute("lpersonnes", lPersonnes);
-        request.setAttribute("calendar", new HelpDate());
-
-        RequestDispatcher rd = request.getRequestDispatcher("administration/listepersonnes.jsp");
-        rd.forward(request, response);
-
+        Cookie cookie = new Cookie("login", "");        
+        cookie.setMaxAge(0);  
+        response.addCookie(cookie);  
+        response.sendRedirect("Index");
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -78,9 +48,7 @@ public class AdminListePersonnes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          
-            processRequest(request, response);
-            
+        processRequest(request, response);
     }
 
     /**
@@ -105,6 +73,6 @@ public class AdminListePersonnes extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>   
+    }// </editor-fold>
 
 }

@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,32 +38,38 @@ public class AjouterBureau extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       request.setCharacterEncoding("UTF-8") ;
+        request.setCharacterEncoding("UTF-8") ;
             
-            
-            
-            RequestDispatcher rd = request.getRequestDispatcher("administration/ajouterbureau.jsp");
-
-            String batiment = request.getParameter("batiment");
-            String numero = request.getParameter("numero");
-            String etage = request.getParameter("etage");
-            String nb_personnes = request.getParameter("nb_personnes");
-            
-            if (batiment != null && numero != null && etage != null && nb_personnes != null) {  
-                Bureau newBureau = new Bureau();
-                newBureau.setBatiment(batiment);
-                newBureau.setNumero(numero);
-                newBureau.setEtage(etage);
-                newBureau.setNbMaxPersonne(new Integer(nb_personnes));
-                bureauFacade.createPrudent(newBureau);
+        String userName = null;
+        Cookie[] cookies = request.getCookies();
+        if(cookies !=null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("login")) 
+                    userName = cookie.getValue();
             }
-            else {
-//            request.setAttribute("nom", nom) ;
-//            request.setAttribute("prenom", prenom) ;
-            }
+        }
+        if(userName == null){
+            response.sendRedirect("AdminLogin");
+            return;
+        }   
             
+        RequestDispatcher rd = request.getRequestDispatcher("administration/ajouterbureau.jsp");
 
-          rd.forward(request, response);
+        String batiment = request.getParameter("batiment");
+        String numero = request.getParameter("numero");
+        String etage = request.getParameter("etage");
+        String nb_personnes = request.getParameter("nb_personnes");
+
+        if (batiment != null && numero != null && etage != null && nb_personnes != null) {  
+            Bureau newBureau = new Bureau();
+            newBureau.setBatiment(batiment);
+            newBureau.setNumero(numero);
+            newBureau.setEtage(etage);
+            newBureau.setNbMaxPersonne(new Integer(nb_personnes));
+            bureauFacade.createPrudent(newBureau);
+        }
+
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
