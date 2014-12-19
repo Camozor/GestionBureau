@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="j" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,6 +18,16 @@
         <div class="content" >
             <h1>Ajouter une personne :</h1>
 
+            <j:if test="${succes == 1}" >
+                <p>Personne ajoutée !</p>
+            </j:if>
+
+
+            <j:if test="${erreur.length() > 0}" >
+                <p><strong>Erreur : </strong>${erreur}</p>
+            </j:if>
+            
+            
             <form action="AjouterPersonne" method="POST" >
                 <label for="nom" >Nom :</label>
                 <input type="text" name="nom" id="nom" /> <br />

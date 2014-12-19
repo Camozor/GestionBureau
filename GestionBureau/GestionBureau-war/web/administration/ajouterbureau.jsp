@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="j" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +17,16 @@
         <%@include file="includes/header.jsp" %>
         <div class="content" >
             <h1>Ajouter un bureau :</h1>
+            
+            
+            <j:if test="${succes == 1}" >
+                <p>Bureau ajouté !</p>
+            </j:if>
+
+
+            <j:if test="${erreur.length() > 0}" >
+                <p><strong>Erreur : </strong>${erreur}</p>
+            </j:if>
 
             <form action="AjouterBureau" method="POST" >
                 <label for="batiment" >Bâtiment (A ou B) :</label>

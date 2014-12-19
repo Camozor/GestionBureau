@@ -32,6 +32,7 @@ localhost:8080/GestionBureau-war/VisiteurListeBureaux
 localhost:8080/GestionBureau-war/EnvoyerMessageAdmin
 
 1.5) Aller sur la page de connexion des administrateurs
+localhost:8080/GestionBureau-war/Administration (redirection vers AdminLogin)
 
 
 2) Pour l'Administrateur
@@ -59,7 +60,6 @@ Depuis AdminListePersonnes ou localhost:8080/GestionBureau-war/AffecterBureau?id
 Propose des bureaux proches de la personne en fonction de son équipe. Les bureaux proches
 sont les bureaux dans le même bâtiment et le même étage.
 Cette fonctionnalité envoie un mail à la personne.
-
 
 2.7) Lire les messages des personnes
 http://localhost:8080/GestionBureau-war/LireMessages

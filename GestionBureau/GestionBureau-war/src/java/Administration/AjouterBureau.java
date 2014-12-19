@@ -44,20 +44,7 @@ public class AjouterBureau extends HttpServlet {
             
         RequestDispatcher rd = request.getRequestDispatcher("administration/ajouterbureau.jsp");
 
-        String batiment = request.getParameter("batiment");
-        String numero = request.getParameter("numero");
-        String etage = request.getParameter("etage");
-        String nb_personnes = request.getParameter("nb_personnes");
-
-        if (batiment != null && numero != null && etage != null && nb_personnes != null) {  
-            Bureau newBureau = new Bureau();
-            newBureau.setBatiment(batiment);
-            newBureau.setNumero(numero);
-            newBureau.setEtage(etage);
-            newBureau.setNbMaxPersonne(new Integer(nb_personnes));
-            bureauFacade.createPrudent(newBureau);
-        }
-
+        
         rd.forward(request, response);
     }
 
@@ -87,6 +74,30 @@ public class AjouterBureau extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        if (Login.nonAutorise(request, response)) return;
+        
+        String batiment = request.getParameter("batiment");
+        String numero = request.getParameter("numero");
+        String etage = request.getParameter("etage");
+        String nb_personnes = request.getParameter("nb_personnes");
+
+        try {
+            if (batiment != null && numero != null && etage != null && nb_personnes != null) {  
+                Bureau newBureau = new Bureau();
+                newBureau.setBatiment(batiment);
+                newBureau.setNumero(numero);
+                newBureau.setEtage(etage);
+                newBureau.setNbMaxPersonne(new Integer(nb_personnes));
+                bureauFacade.createPrudent(newBureau);
+                request.setAttribute("succes", 1);
+            }
+            else {
+                request.setAttribute("erreur", "Formulaire mal rempli.");
+            }
+        }catch(NumberFormatException e) {
+                request.setAttribute("erreur", "Formulaire mal rempli.");}
+
         processRequest(request, response);
     }
 

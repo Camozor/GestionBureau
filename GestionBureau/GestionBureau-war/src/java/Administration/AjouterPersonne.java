@@ -43,42 +43,7 @@ public class AjouterPersonne extends HttpServlet {
         if (Login.nonAutorise(request, response)) return;
         
         RequestDispatcher rd = request.getRequestDispatcher("administration/ajouterpersonne.jsp"); 
-        String nom = request.getParameter("nom");
-        String prenom = request.getParameter("prenom");
-        String mail = request.getParameter("mail");
-        String equipe = request.getParameter("equipe");
-        String date_debut = request.getParameter("date_debut");
-        String date_fin = request.getParameter("date_fin");
         
-         if (nom != null && prenom != null && mail != null && equipe != null && date_debut != null) {
-            
-            try {
-                Personne p = new Personne();
-                p.setNom(nom);
-                p.setPrenom(prenom);
-                p.setMail(mail);
-                p.setEquipe(equipe);
-                p.setDateDebut(Date.valueOf(date_debut));
-                
-                try {
-                    Date dateFin = Date.valueOf(date_fin);
-                    p.setDateFin(dateFin);
-                    System.out.println(Date.valueOf(date_fin).toString());
-                }
-                catch (Exception err) {
-                    System.out.println(err);
-                }
-                
-                personneFacade.create(p);
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-         else { 
-             
-         }
          
         rd.forward(request, response);
     }
@@ -109,6 +74,48 @@ public class AjouterPersonne extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        if (Login.nonAutorise(request, response)) return;
+        
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String mail = request.getParameter("mail");
+        String equipe = request.getParameter("equipe");
+        String date_debut = request.getParameter("date_debut");
+        String date_fin = request.getParameter("date_fin");
+        
+         if (nom != null && prenom != null && mail != null && equipe != null && date_debut != null) {
+            
+            try {
+                Personne p = new Personne();
+                p.setNom(nom);
+                p.setPrenom(prenom);
+                p.setMail(mail);
+                p.setEquipe(equipe);
+                p.setDateDebut(Date.valueOf(date_debut));
+                
+                try {
+                    Date dateFin = Date.valueOf(date_fin);
+                    p.setDateFin(dateFin);
+                    System.out.println(Date.valueOf(date_fin).toString());
+                }
+                catch (Exception err) {
+                    System.out.println(err);
+                }
+                
+                personneFacade.create(p);
+                 request.setAttribute("succes", 1);
+            }
+            catch (Exception e) { 
+                request.setAttribute("erreur", "Formulaire mal rempli.");
+            }
+
+        }
+         else { 
+              request.setAttribute("erreur", "Formulaire mal rempli.");
+         }
+        
+        
         processRequest(request, response);
     }
 
